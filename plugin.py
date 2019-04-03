@@ -24,6 +24,16 @@ default_config = ClientConfig(
             'css',
             ['source.css'],
             ["Packages/CSS/CSS.sublime-syntax"]
+        ),
+        LanguageConfig(
+            'scss',
+            ['source.scss'],
+            ["Packages/Sass/Syntaxes/SCSS.sublime-syntax"]
+        ),
+        LanguageConfig(
+            'less',
+            ['source.less'],
+            ['Packages/LESS/Syntaxes/LESS.sublime-syntax']
         )
     ]
 )
