@@ -9,3 +9,5 @@ If you use Sass install [Sass](https://packagecontrol.io/packages/Sass).
 If you use Less install [LESS](https://packagecontrol.io/packages/LESS).
 
 Server related issues report [here](https://github.com/vscode-langservers/vscode-css-languageserver).
+
+> Note: On Mac, if you have problems running `LSP: Setup CSS server`, install [Fix Mac Path](https://packagecontrol.io/packages/Fix%20Mac%20Path), and optionally set the `additional_path_items` in your user preferences.
