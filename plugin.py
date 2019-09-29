@@ -79,6 +79,26 @@ class LspCssPlugin(LanguageHandler):
                 'node',
                 server_path,
                 '--stdio'
+            ],
+            "languages": [
+                {
+                    "languageId": "css",
+                    "scopes": ["source.css"],
+                    "syntaxes": [
+                        "Packages/CSS/CSS.sublime-syntax",
+                        "Packages/CSS3/CSS3.sublime-syntax"
+                    ]
+                },
+                {
+                    "languageId": "scss",
+                    "scopes": ["source.scss"],
+                    "syntaxes": ["Packages/Sass/Syntaxes/SCSS.sublime-syntax"]
+                },
+                {
+                    "languageId": "less",
+                    "scopes": ["source.less"],
+                    "syntaxes": ["Packages/LESS/Syntaxes/LESS.sublime-syntax"]
+                }
             ]
         }
         default_configuration.update(client_configuration)
