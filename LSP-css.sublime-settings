@@ -1,0 +1,27 @@
+{
+	"client" : {
+		"enabled": true,
+		"languages": [
+			{
+				"languageId": "css",
+				"scopes": ["source.css"],
+				"syntaxes": [
+					"Packages/CSS/CSS.sublime-syntax",
+					"Packages/CSS3/CSS3.sublime-syntax"
+				]
+			},
+			{
+				"languageId": "scss",
+				"scopes": ["source.scss"],
+				"syntaxes": ["Packages/Sass/Syntaxes/SCSS.sublime-syntax"]
+			},
+			{
+				"languageId": "less",
+				"scopes": ["source.less"],
+				"syntaxes": ["Packages/LESS/Syntaxes/LESS.sublime-syntax"]
+			}
+		],
+		"initializationOptions": {},
+		"settings": {}
+	}
+}
