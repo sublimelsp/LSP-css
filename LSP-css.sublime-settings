@@ -7,23 +7,45 @@
 				"scopes": ["source.css"],
 				"syntaxes": [
 					"Packages/CSS/CSS.sublime-syntax",
-					"Packages/CSS3/CSS3.sublime-syntax"
-				]
+					"Packages/CSS3/CSS3.sublime-syntax",
+				],
 			},
 			{
 				"languageId": "scss",
 				"scopes": ["source.scss"],
-				"syntaxes": ["Packages/Sass/Syntaxes/SCSS.sublime-syntax"]
+				"syntaxes": ["Packages/Sass/Syntaxes/SCSS.sublime-syntax"],
 			},
 			{
 				"languageId": "less",
 				"scopes": ["source.less"],
-				"syntaxes": ["Packages/LESS/Syntaxes/LESS.sublime-syntax"]
-			}
+				"syntaxes": ["Packages/LESS/Syntaxes/LESS.sublime-syntax"],
+			},
 		],
 		"initializationOptions": {
 			"dataPaths": [],
 		},
-		"settings": {}
-	}
+		"settings": {
+			"css": {
+				"validate": true,
+				"lint": {
+					"duplicateProperties": "warning",
+					"unknownVendorSpecificProperties": "warning",
+				},
+			},
+			"less": {
+				"validate": true,
+				"lint": {
+					"duplicateProperties": "warning",
+					"unknownVendorSpecificProperties": "warning",
+				},
+			},
+			"scss": {
+				"validate": true,
+				"lint": {
+					"duplicateProperties": "warning",
+					"unknownVendorSpecificProperties": "warning",
+				},
+			},
+		},
+	},
 }

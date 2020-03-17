@@ -69,6 +69,29 @@ class LspCssPlugin(LanguageHandler):
             "initializationOptions": {
                 "dataPaths": [],
             },
+            "settings": {
+                "css": {
+                    "validate": True,
+                    "lint": {
+                        "duplicateProperties": "warning",
+                        "unknownVendorSpecificProperties": "warning",
+                    },
+                },
+                "less": {
+                    "validate": True,
+                    "lint": {
+                        "duplicateProperties": "warning",
+                        "unknownVendorSpecificProperties": "warning",
+                    },
+                },
+                "scss": {
+                    "validate": True,
+                    "lint": {
+                        "duplicateProperties": "warning",
+                        "unknownVendorSpecificProperties": "warning",
+                    },
+                },
+            },
         }
 
         default_configuration.update(client_configuration)
