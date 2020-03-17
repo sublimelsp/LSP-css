@@ -35,7 +35,7 @@ popd || exit
 pushd "${SRC_DIR}" || exit
 
 npm install
-npm install --save typescript
+npm install --save-dev typescript
 
 popd || exit
 
