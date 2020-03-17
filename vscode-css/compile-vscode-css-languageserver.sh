@@ -11,9 +11,11 @@ DIST_DIR="${REPO_DIR}/out"
 # download the source codes #
 # ------------------------- #
 
-pushd "${SCRIPT_DIR}" || exit
+pushd "${REPO_DIR}" || exit
 
-rm -rf "${SRC_DIR}" "${DIST_DIR}"
+rm -rf \
+    "${SRC_DIR}" "${DIST_DIR}" \
+    "package.json" "package-lock.json"
 
 # or get the source via git clone
 # git clone --depth=1 https://github.com/vscode-langservers/vscode-css-languageserver "${SRC_DIR}"
@@ -34,24 +36,6 @@ pushd "${SRC_DIR}" || exit
 
 npm install
 npm install --save typescript
-cat << EOF > tsconfig.json
-{
-	"compilerOptions": {
-		"target": "es2018",
-		"module": "commonjs",
-		"strict": true,
-		"alwaysStrict": true,
-		"noImplicitAny": true,
-		"noImplicitReturns": true,
-		"noUnusedLocals": true,
-		"noUnusedParameters": true,
-		"outDir": "./out"
-	},
-	"include": [
-		"src/**/*"
-	]
-}
-EOF
 
 popd || exit
 
@@ -62,9 +46,38 @@ popd || exit
 
 pushd "${SRC_DIR}" || exit
 
-./node_modules/typescript/bin/tsc -p .
+cat << EOF > tsconfig.json
+{
+    "compilerOptions": {
+        "target": "es2018",
+        "module": "commonjs",
+        "strict": true,
+        "alwaysStrict": true,
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "outDir": "./out"
+    },
+    "files": [
+        "src/cssServerMain.ts"
+    ]
+}
+EOF
 
-cp package.json "${REPO_DIR}"
-mv out "${DIST_DIR}"
+./node_modules/typescript/bin/tsc --newLine LF -p .
+
+popd || exit
+
+
+# -------------------- #
+# collect output files #
+# -------------------- #
+
+pushd "${REPO_DIR}" || exit
+
+mv "${SRC_DIR}/out" "${DIST_DIR}"
+cp "${SRC_DIR}/package.json" "${REPO_DIR}"
+cp "${SRC_DIR}/package-lock.json" "${REPO_DIR}"
 
 popd || exit

@@ -3,8 +3,7 @@ import os
 import sublime
 
 from LSP.plugin.core.handlers import LanguageHandler
-from LSP.plugin.core.settings import ClientConfig
-from LSP.plugin.core.settings import read_client_config
+from LSP.plugin.core.settings import ClientConfig, read_client_config
 from .utils.resources import ServerNpmResource
 
 PACKAGE_NAME = 'LSP-css'
@@ -30,11 +29,11 @@ def is_node_installed():
 class LspCssPlugin(LanguageHandler):
     @property
     def name(self) -> str:
-        return 'lsp-css'
+        return PACKAGE_NAME.lower()
 
     @property
     def config(self) -> ClientConfig:
-        settings = sublime.load_settings("LSP-css.sublime-settings")
+        settings = sublime.load_settings(SETTINGS_FILENAME)
         client_configuration = settings.get('client')
         if client_configuration is None:
             client_configuration = {}
