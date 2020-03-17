@@ -70,11 +70,6 @@ class LspCssPlugin(LanguageHandler):
                     ],
                 },
                 {
-                    "languageId": "sass",
-                    "scopes": ["source.sass"],
-                    "syntaxes": ["Packages/Sass/Syntaxes/Sass.sublime-syntax"],
-                },
-                {
                     "languageId": "scss",
                     "scopes": ["source.scss"],
                     "syntaxes": ["Packages/Sass/Syntaxes/SCSS.sublime-syntax"],
@@ -97,13 +92,6 @@ class LspCssPlugin(LanguageHandler):
                     },
                 },
                 "less": {
-                    "validate": True,
-                    "lint": {
-                        "duplicateProperties": "warning",
-                        "unknownVendorSpecificProperties": "warning",
-                    },
-                },
-                "sass": {
                     "validate": True,
                     "lint": {
                         "duplicateProperties": "warning",
