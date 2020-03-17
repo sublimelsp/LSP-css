@@ -35,7 +35,7 @@ popd || exit
 pushd "${SRC_DIR}" || exit
 
 npm install
-npm install --save-dev typescript
+npm install -D typescript
 
 popd || exit
 
@@ -65,7 +65,7 @@ cat << EOF > tsconfig.json
 }
 EOF
 
-./node_modules/typescript/bin/tsc --newLine LF -p .
+npx tsc --newLine LF -p .
 
 popd || exit
 
@@ -77,7 +77,7 @@ popd || exit
 pushd "${REPO_DIR}" || exit
 
 mv "${SRC_DIR}/out" "${DIST_DIR}"
-cp "${SRC_DIR}/package.json" "${REPO_DIR}"
-cp "${SRC_DIR}/package-lock.json" "${REPO_DIR}"
+cp "${SRC_DIR}/package.json" .
+cp "${SRC_DIR}/package-lock.json" .
 
 popd || exit
