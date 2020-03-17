@@ -81,6 +81,7 @@ class LspCssPlugin(LanguageHandler):
                 },
             ],
             "initializationOptions": {
+                # @see https://github.com/sublimelsp/LSP-css/pull/2#discussion_r393881421
                 "dataPaths": [],
             },
             "settings": {
