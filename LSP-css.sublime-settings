@@ -11,6 +11,11 @@
 				],
 			},
 			{
+				"languageId": "sass",
+				"scopes": ["source.sass"],
+				"syntaxes": ["Packages/Sass/Syntaxes/Sass.sublime-syntax"],
+			},
+			{
 				"languageId": "scss",
 				"scopes": ["source.scss"],
 				"syntaxes": ["Packages/Sass/Syntaxes/SCSS.sublime-syntax"],
@@ -33,6 +38,13 @@
 				},
 			},
 			"less": {
+				"validate": true,
+				"lint": {
+					"duplicateProperties": "warning",
+					"unknownVendorSpecificProperties": "warning",
+				},
+			},
+			"sass": {
 				"validate": true,
 				"lint": {
 					"duplicateProperties": "warning",
