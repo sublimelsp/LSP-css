@@ -21,7 +21,9 @@
 				"syntaxes": ["Packages/LESS/Syntaxes/LESS.sublime-syntax"]
 			}
 		],
-		"initializationOptions": {},
+		"initializationOptions": {
+			"dataPaths": [],
+		},
 		"settings": {}
 	}
 }
