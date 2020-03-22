@@ -72,7 +72,7 @@ class LspCssPlugin(LanguageHandler):
         if not is_node_installed():
             sublime.status_message('Please install Node.js for the CSS Language Server to work.')
             return False
-        return True
+        return server.ready
 
     def on_initialized(self, client) -> None:
         pass   # extra initialization here.
