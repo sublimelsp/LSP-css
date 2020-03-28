@@ -1,33 +1,8 @@
 {
 	"languages": [
-		{
-			"languageId": "css",
-			"scopes": [
-				"source.css",
-			],
-			"syntaxes": [
-				"Packages/CSS/CSS.sublime-syntax",
-				"Packages/CSS3/CSS3.sublime-syntax",
-			],
-		},
-		{
-			"languageId": "scss",
-			"scopes": [
-				"source.scss",
-			],
-			"syntaxes": [
-				"Packages/Sass/Syntaxes/SCSS.sublime-syntax",
-			],
-		},
-		{
-			"languageId": "less",
-			"scopes": [
-				"source.less",
-			],
-			"syntaxes": [
-				"Packages/LESS/Syntaxes/LESS.sublime-syntax",
-			],
-		},
+		{"languageId": "css"},
+		{"languageId": "scss"},
+		{"languageId": "less"},
 	],
 	"initializationOptions": {
 		// @see https://github.com/sublimelsp/LSP-css/pull/2#discussion_r393881421
