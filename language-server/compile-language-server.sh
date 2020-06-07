@@ -10,21 +10,33 @@ SRC_DIR="${REPO_DIR}/${GITHUB_REPO_NAME}"
 DIST_DIR="${REPO_DIR}/out"
 
 
+# -------- #
+# clean up #
+# -------- #
+
+pushd "${REPO_DIR}" || exit
+
+rm -rf \
+    "${DIST_DIR}" \
+    "package.json" "package-lock.json"
+
+popd || exit
+
+
 # ------------------------- #
 # download the source codes #
 # ------------------------- #
 
 pushd "${REPO_DIR}" || exit
 
-rm -rf \
-    "${SRC_DIR}" "${DIST_DIR}" \
-    "package.json" "package-lock.json"
+echo 'Enter commit SHA, branch or tag (for example 2.1.0) to build'
+read -rp 'SHA, branch or tag: ' ref
 
-# or get the source via git clone
-# git clone --depth=1 "${GITHUB_REPO_URL}.git" "${SRC_DIR}"
-
-curl -L "${GITHUB_REPO_URL}/archive/master.tar.gz" | tar -xzv
-mv "${GITHUB_REPO_NAME}-master" "${SRC_DIR}"
+temp_zip="src-${ref}.zip"
+curl -L "${GITHUB_REPO_URL}/archive/${ref}.zip" -o "${temp_zip}"
+unzip -z "${temp_zip}" > zip-info.log
+unzip "${temp_zip}" && rm -f "${temp_zip}"
+mv "${GITHUB_REPO_NAME}-"* "${SRC_DIR}"
 
 popd || exit
 
@@ -80,5 +92,16 @@ pushd "${REPO_DIR}" || exit
 mv "${SRC_DIR}/out" "${DIST_DIR}"
 cp "${SRC_DIR}/package.json" .
 cp "${SRC_DIR}/package-lock.json" .
+
+popd || exit
+
+
+# -------- #
+# clean up #
+# -------- #
+
+pushd "${REPO_DIR}" || exit
+
+rm -rf "${SRC_DIR}"
 
 popd || exit
