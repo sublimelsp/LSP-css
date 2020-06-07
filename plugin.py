@@ -13,4 +13,4 @@ def plugin_unloaded():
 class LspCssPlugin(NpmClientHandler):
     package_name = __package__
     server_directory = 'vscode-css'
-    server_binary_path = os.path.join(server_directory, 'out', 'cssServerMain.js')
+    server_binary_path = os.path.join(server_directory, 'out', 'node', 'cssServerMain.js')
