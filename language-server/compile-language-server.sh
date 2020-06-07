@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 # @see https://github.com/mattn/vim-lsp-settings/pull/48
 
+GITHUB_REPO_URL="https://github.com/vscode-langservers/vscode-css-languageserver"
+GITHUB_REPO_NAME=$(echo "${GITHUB_REPO_URL}" | command grep -oE '[^/]*$')
+
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 REPO_DIR="${SCRIPT_DIR}"
-SRC_DIR="${REPO_DIR}/vscode-css-languageserver"
+SRC_DIR="${REPO_DIR}/${GITHUB_REPO_NAME}"
 DIST_DIR="${REPO_DIR}/out"
 
 
@@ -18,10 +21,10 @@ rm -rf \
     "package.json" "package-lock.json"
 
 # or get the source via git clone
-# git clone --depth=1 https://github.com/vscode-langservers/vscode-css-languageserver "${SRC_DIR}"
+# git clone --depth=1 "${GITHUB_REPO_URL}.git" "${SRC_DIR}"
 
-curl -L https://github.com/vscode-langservers/vscode-css-languageserver/archive/master.tar.gz | tar -xzv
-mv vscode-css-languageserver-master "${SRC_DIR}"
+curl -L "${GITHUB_REPO_URL}/archive/master.tar.gz" | tar -xzv
+mv "${GITHUB_REPO_NAME}-master" "${SRC_DIR}"
 
 popd || exit
 
