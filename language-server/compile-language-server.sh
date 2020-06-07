@@ -30,7 +30,12 @@ popd || exit
 pushd "${REPO_DIR}" || exit
 
 echo 'Enter commit SHA, branch or tag (for example 2.1.0) to build'
-read -rp 'SHA, branch or tag: ' ref
+read -rp 'SHA, branch or tag (default: master): ' ref
+
+# use the "master" branch by default
+if [ "${ref}" = "" ]; then
+    ref="master"
+fi
 
 temp_zip="src-${ref}.zip"
 curl -L "${GITHUB_REPO_URL}/archive/${ref}.zip" -o "${temp_zip}"
