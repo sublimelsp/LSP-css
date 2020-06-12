@@ -39,7 +39,7 @@ fi
 
 temp_zip="src-${ref}.zip"
 curl -L "${GITHUB_REPO_URL}/archive/${ref}.zip" -o "${temp_zip}"
-unzip -z "${temp_zip}" > zip-info.log
+unzip -z "${temp_zip}" > update-info.log
 unzip "${temp_zip}" && rm -f "${temp_zip}"
 mv "${GITHUB_REPO_NAME}-"* "${SRC_DIR}"
 
