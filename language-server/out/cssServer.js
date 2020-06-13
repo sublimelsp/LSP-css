@@ -5,7 +5,7 @@
  *--------------------------------------------------------------------------------------------*/
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.startServer = void 0;
-const api_1 = require("vscode-languageserver/lib/common/api");
+const vscode_languageserver_1 = require("vscode-languageserver");
 const vscode_uri_1 = require("vscode-uri");
 const vscode_css_languageservice_1 = require("vscode-css-languageservice");
 const languageModelCache_1 = require("./languageModelCache");
@@ -15,11 +15,11 @@ const customData_1 = require("./customData");
 const requests_1 = require("./requests");
 var CustomDataChangedNotification;
 (function (CustomDataChangedNotification) {
-    CustomDataChangedNotification.type = new api_1.NotificationType('css/customDataChanged');
+    CustomDataChangedNotification.type = new vscode_languageserver_1.NotificationType('css/customDataChanged');
 })(CustomDataChangedNotification || (CustomDataChangedNotification = {}));
 function startServer(connection, runtime) {
     // Create a text document manager.
-    const documents = new api_1.TextDocuments(vscode_css_languageservice_1.TextDocument);
+    const documents = new vscode_languageserver_1.TextDocuments(vscode_css_languageservice_1.TextDocument);
     // Make the text document manager listen on the connection
     // for open, change and close text document events
     documents.listen(connection);
@@ -66,7 +66,7 @@ function startServer(connection, runtime) {
         languageServices.scss = vscode_css_languageservice_1.getSCSSLanguageService({ fileSystemProvider: requestService, clientCapabilities: params.capabilities });
         languageServices.less = vscode_css_languageservice_1.getLESSLanguageService({ fileSystemProvider: requestService, clientCapabilities: params.capabilities });
         const capabilities = {
-            textDocumentSync: api_1.TextDocumentSyncKind.Incremental,
+            textDocumentSync: vscode_languageserver_1.TextDocumentSyncKind.Incremental,
             completionProvider: snippetSupport ? { resolveProvider: false, triggerCharacters: ['/', '-'] } : undefined,
             hoverProvider: true,
             documentSymbolProvider: true,
@@ -102,7 +102,7 @@ function startServer(connection, runtime) {
             let promise = documentSettings[textDocument.uri];
             if (!promise) {
                 const configRequestParam = { items: [{ scopeUri: textDocument.uri, section: textDocument.languageId }] };
-                promise = connection.sendRequest(api_1.ConfigurationRequest.type, configRequestParam).then(s => s[0]);
+                promise = connection.sendRequest(vscode_languageserver_1.ConfigurationRequest.type, configRequestParam).then(s => s[0]);
                 documentSettings[textDocument.uri] = promise;
             }
             return promise;

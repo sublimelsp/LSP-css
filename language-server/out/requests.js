@@ -4,7 +4,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.joinPath = exports.normalizePath = exports.resolvePath = exports.isAbsolutePath = exports.basename = exports.dirname = exports.getScheme = exports.getRequestService = exports.FileType = exports.FsReadDirRequest = exports.FsStatRequest = exports.FsContentRequest = void 0;
+exports.joinPath = exports.normalizePath = exports.resolvePath = exports.isAbsolutePath = exports.extname = exports.basename = exports.dirname = exports.getScheme = exports.getRequestService = exports.FileType = exports.FsReadDirRequest = exports.FsStatRequest = exports.FsContentRequest = void 0;
 const vscode_uri_1 = require("vscode-uri");
 const vscode_languageserver_1 = require("vscode-languageserver");
 var FsContentRequest;
@@ -90,6 +90,24 @@ function basename(uri) {
 exports.basename = basename;
 const Slash = '/'.charCodeAt(0);
 const Dot = '.'.charCodeAt(0);
+function extname(uri) {
+    for (let i = uri.length - 1; i >= 0; i--) {
+        const ch = uri.charCodeAt(i);
+        if (ch === Dot) {
+            if (i > 0 && uri.charCodeAt(i - 1) !== Slash) {
+                return uri.substr(i);
+            }
+            else {
+                break;
+            }
+        }
+        else if (ch === Slash) {
+            break;
+        }
+    }
+    return '';
+}
+exports.extname = extname;
 function isAbsolutePath(path) {
     return path.charCodeAt(0) === Slash;
 }
