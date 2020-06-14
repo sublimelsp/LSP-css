@@ -1,10 +1,26 @@
 #!/usr/bin/env bash
 # @see https://github.com/mattn/vim-lsp-settings/pull/48
 
+GITHUB_REPO_URL="https://github.com/vscode-langservers/vscode-css-languageserver"
+GITHUB_REPO_NAME=$(echo "${GITHUB_REPO_URL}" | command grep -oE '[^/]*$')
+
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 REPO_DIR="${SCRIPT_DIR}"
-SRC_DIR="${REPO_DIR}/vscode-css-languageserver"
+SRC_DIR="${REPO_DIR}/${GITHUB_REPO_NAME}"
 DIST_DIR="${REPO_DIR}/out"
+
+
+# -------- #
+# clean up #
+# -------- #
+
+pushd "${REPO_DIR}" || exit
+
+rm -rf \
+    "${DIST_DIR}" \
+    "package.json" "package-lock.json"
+
+popd || exit
 
 
 # ------------------------- #
@@ -13,15 +29,19 @@ DIST_DIR="${REPO_DIR}/out"
 
 pushd "${REPO_DIR}" || exit
 
-rm -rf \
-    "${SRC_DIR}" "${DIST_DIR}" \
-    "package.json" "package-lock.json"
+echo 'Enter commit SHA, branch or tag (for example 2.1.0) to build'
+read -rp 'SHA, branch or tag (default: master): ' ref
 
-# or get the source via git clone
-# git clone --depth=1 https://github.com/vscode-langservers/vscode-css-languageserver "${SRC_DIR}"
+# use the "master" branch by default
+if [ "${ref}" = "" ]; then
+    ref="master"
+fi
 
-curl -L https://github.com/vscode-langservers/vscode-css-languageserver/archive/master.tar.gz | tar -xzv
-mv vscode-css-languageserver-master "${SRC_DIR}"
+temp_zip="src-${ref}.zip"
+curl -L "${GITHUB_REPO_URL}/archive/${ref}.zip" -o "${temp_zip}"
+unzip -z "${temp_zip}" > update-info.log
+unzip "${temp_zip}" && rm -f "${temp_zip}"
+mv "${GITHUB_REPO_NAME}-"* "${SRC_DIR}"
 
 popd || exit
 
@@ -58,7 +78,7 @@ cat << EOF > tsconfig.json
         "outDir": "./out"
     },
     "files": [
-        "src/cssServerMain.ts"
+        "src/node/cssServerMain.ts"
     ]
 }
 EOF
@@ -77,5 +97,16 @@ pushd "${REPO_DIR}" || exit
 mv "${SRC_DIR}/out" "${DIST_DIR}"
 cp "${SRC_DIR}/package.json" .
 cp "${SRC_DIR}/package-lock.json" .
+
+popd || exit
+
+
+# -------- #
+# clean up #
+# -------- #
+
+pushd "${REPO_DIR}" || exit
+
+rm -rf "${SRC_DIR}"
 
 popd || exit
