@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# @see https://github.com/mattn/vim-lsp-settings/pull/48
 
 GITHUB_REPO_URL="https://github.com/vscode-langservers/vscode-css-languageserver"
 GITHUB_REPO_NAME=$(echo "${GITHUB_REPO_URL}" | command grep -oE '[^/]*$')
