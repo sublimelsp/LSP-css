@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# @see https://github.com/mattn/vim-lsp-settings/pull/48
 
 GITHUB_REPO_URL="https://github.com/vscode-langservers/vscode-css-languageserver"
 GITHUB_REPO_NAME=$(echo "${GITHUB_REPO_URL}" | command grep -oE '[^/]*$')
@@ -39,7 +38,7 @@ fi
 
 temp_zip="src-${ref}.zip"
 curl -L "${GITHUB_REPO_URL}/archive/${ref}.zip" -o "${temp_zip}"
-unzip -z "${temp_zip}" > update-info.log
+unzip -z "${temp_zip}" | tr -d '\r' > update-info.log
 unzip "${temp_zip}" && rm -f "${temp_zip}"
 mv "${GITHUB_REPO_NAME}-"* "${SRC_DIR}"
 

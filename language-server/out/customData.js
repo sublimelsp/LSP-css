@@ -28,7 +28,7 @@ function parseCSSData(source) {
         return vscode_css_languageservice_1.newCSSDataProvider({ version: 1 });
     }
     return vscode_css_languageservice_1.newCSSDataProvider({
-        version: 1,
+        version: rawData.version || 1,
         properties: rawData.properties || [],
         atDirectives: rawData.atDirectives || [],
         pseudoClasses: rawData.pseudoClasses || [],
