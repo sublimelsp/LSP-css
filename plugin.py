@@ -16,10 +16,6 @@ class LspCssPlugin(NpmClientHandler):
     server_directory = 'language-server'
     server_binary_path = os.path.join(server_directory, 'out', 'node', 'cssServerMain.js')
 
-    @classmethod
-    def install_in_cache(cls) -> bool:
-        return False
-
     def on_pre_server_command(self, command: Mapping[str, Any], done_callback: Callable[[], None]) -> bool:
         if command['command'] == 'editor.action.triggerSuggest':
             session = self.weaksession()
