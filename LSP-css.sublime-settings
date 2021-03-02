@@ -30,6 +30,8 @@
 			],
 		},
 	],
+	// "disabled_capabilities" is ST4-only.
+	// If you are on ST3, it's in LSP's configuration and can't be set client-wise.
 	"disabled_capabilities": {
 		// remove the comment for "colorProvider" if you prefer other color plugins
 		// such as "ColorHelper" or "Color Highlighter"
