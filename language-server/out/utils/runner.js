@@ -43,5 +43,5 @@ function runSafeAsync(func, errorVal, errorMessage, token) {
 }
 exports.runSafeAsync = runSafeAsync;
 function cancelValue() {
-    return new vscode_languageserver_1.ResponseError(vscode_languageserver_1.ErrorCodes.RequestCancelled, 'Request cancelled');
+    return new vscode_languageserver_1.ResponseError(vscode_languageserver_1.LSPErrorCodes.RequestCancelled, 'Request cancelled');
 }
