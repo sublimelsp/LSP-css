@@ -6,7 +6,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getDocumentContext = void 0;
 const strings_1 = require("../utils/strings");
-const requests_1 = require("../requests");
+const vscode_uri_1 = require("vscode-uri");
 function getDocumentContext(documentUri, workspaceFolders) {
     function getRootFolder() {
         for (let folder of workspaceFolders) {
@@ -29,7 +29,7 @@ function getDocumentContext(documentUri, workspaceFolders) {
                 }
             }
             base = base.substr(0, base.lastIndexOf('/') + 1);
-            return requests_1.resolvePath(base, ref);
+            return vscode_uri_1.Utils.resolvePath(vscode_uri_1.URI.parse(base), ref).toString();
         },
     };
 }

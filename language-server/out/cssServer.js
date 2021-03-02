@@ -40,6 +40,7 @@ function startServer(connection, runtime) {
     // After the server has started the client sends an initialize request. The server receives
     // in the passed params the rootPath of the workspace plus the client capabilities.
     connection.onInitialize((params) => {
+        var _a;
         workspaceFolders = params.workspaceFolders;
         if (!Array.isArray(workspaceFolders)) {
             workspaceFolders = [];
@@ -47,7 +48,7 @@ function startServer(connection, runtime) {
                 workspaceFolders.push({ name: '', uri: vscode_uri_1.URI.file(params.rootPath).toString() });
             }
         }
-        requestService = requests_1.getRequestService(params.initializationOptions.handledSchemas || ['file'], connection, runtime);
+        requestService = requests_1.getRequestService(((_a = params.initializationOptions) === null || _a === void 0 ? void 0 : _a.handledSchemas) || ['file'], connection, runtime);
         function getClientCapability(name, def) {
             const keys = name.split('.');
             let c = params.capabilities;
@@ -67,7 +68,7 @@ function startServer(connection, runtime) {
         languageServices.less = vscode_css_languageservice_1.getLESSLanguageService({ fileSystemProvider: requestService, clientCapabilities: params.capabilities });
         const capabilities = {
             textDocumentSync: vscode_languageserver_1.TextDocumentSyncKind.Incremental,
-            completionProvider: snippetSupport ? { resolveProvider: false, triggerCharacters: ['/', '-'] } : undefined,
+            completionProvider: snippetSupport ? { resolveProvider: false, triggerCharacters: ['/', '-', ':'] } : undefined,
             hoverProvider: true,
             documentSymbolProvider: true,
             referencesProvider: true,
@@ -170,10 +171,10 @@ function startServer(connection, runtime) {
         return runner_1.runSafeAsync(async () => {
             const document = documents.get(textDocumentPosition.textDocument.uri);
             if (document) {
-                await dataProvidersReady;
+                const [settings,] = await Promise.all([getDocumentSettings(document), dataProvidersReady]);
                 const styleSheet = stylesheets.get(document);
                 const documentContext = documentContext_1.getDocumentContext(document.uri, workspaceFolders);
-                return getLanguageService(document).doComplete2(document, textDocumentPosition.position, styleSheet, documentContext);
+                return getLanguageService(document).doComplete2(document, textDocumentPosition.position, styleSheet, documentContext, settings === null || settings === void 0 ? void 0 : settings.completion);
             }
             return null;
         }, null, `Error while computing completions for ${textDocumentPosition.textDocument.uri}`, token);
@@ -182,9 +183,9 @@ function startServer(connection, runtime) {
         return runner_1.runSafeAsync(async () => {
             const document = documents.get(textDocumentPosition.textDocument.uri);
             if (document) {
-                await dataProvidersReady;
+                const [settings,] = await Promise.all([getDocumentSettings(document), dataProvidersReady]);
                 const styleSheet = stylesheets.get(document);
-                return getLanguageService(document).doHover(document, textDocumentPosition.position, styleSheet);
+                return getLanguageService(document).doHover(document, textDocumentPosition.position, styleSheet, settings === null || settings === void 0 ? void 0 : settings.hover);
             }
             return null;
         }, null, `Error while computing hover for ${textDocumentPosition.textDocument.uri}`, token);
