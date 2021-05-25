@@ -12,5 +12,12 @@ def plugin_unloaded():
 
 class LspCssPlugin(NpmClientHandler):
     package_name = __package__
-    server_directory = 'language-server'
-    server_binary_path = os.path.join(server_directory, 'out', 'node', 'cssServerMain.js')
+    server_directory = "language-server"
+    server_binary_path = os.path.join(
+        server_directory,
+        "css-language-features",
+        "server",
+        "out",
+        "node",
+        "cssServerMain.js",
+    )
