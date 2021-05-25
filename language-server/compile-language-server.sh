@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-GITHUB_REPO_URL="https://github.com/vscode-langservers/vscode-css-languageserver"
+GITHUB_REPO_URL="https://github.com/microsoft/vscode"
 GITHUB_REPO_NAME=$(echo "${GITHUB_REPO_URL}" | command grep -oE '[^/]*$')
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 REPO_DIR="${SCRIPT_DIR}"
-SRC_DIR="${REPO_DIR}/${GITHUB_REPO_NAME}"
-DIST_DIR="${REPO_DIR}/out"
+SRC_DIR="${REPO_DIR}/${GITHUB_REPO_NAME}/extensions/css-language-features/server"
+DIST_DIR="${REPO_DIR}/css-language-features/server"
 
 
 # -------- #
@@ -16,7 +16,7 @@ DIST_DIR="${REPO_DIR}/out"
 pushd "${REPO_DIR}" || exit
 
 rm -rf \
-    "${DIST_DIR}" \
+    "css-language-features/" \
     "package.json" "package-lock.json"
 
 popd || exit
@@ -29,18 +29,18 @@ popd || exit
 pushd "${REPO_DIR}" || exit
 
 echo 'Enter commit SHA, branch or tag (for example 2.1.0) to build'
-read -rp 'SHA, branch or tag (default: master): ' ref
+read -rp 'SHA, branch or tag (default: main): ' ref
 
-# use the "master" branch by default
+# use the "main" branch by default
 if [ "${ref}" = "" ]; then
-    ref="master"
+    ref="main"
 fi
 
 temp_zip="src-${ref}.zip"
 curl -L "${GITHUB_REPO_URL}/archive/${ref}.zip" -o "${temp_zip}"
 unzip -z "${temp_zip}" | tr -d '\r' > update-info.log
 unzip "${temp_zip}" && rm -f "${temp_zip}"
-mv "${GITHUB_REPO_NAME}-"* "${SRC_DIR}"
+mv "${GITHUB_REPO_NAME}-"* "${GITHUB_REPO_NAME}"
 
 popd || exit
 
@@ -93,7 +93,9 @@ popd || exit
 
 pushd "${REPO_DIR}" || exit
 
-mv "${SRC_DIR}/out" "${DIST_DIR}"
+mkdir -p "${DIST_DIR}"
+
+cp -rf "${SRC_DIR}/out" "${DIST_DIR}"
 cp "${SRC_DIR}/package.json" .
 cp "${SRC_DIR}/package-lock.json" .
 
@@ -106,6 +108,6 @@ popd || exit
 
 pushd "${REPO_DIR}" || exit
 
-rm -rf "${SRC_DIR}"
+rm -rf "${GITHUB_REPO_NAME}"
 
 popd || exit
