@@ -120,9 +120,6 @@
 		// No unit for zero needed.
 		// possible values: ignore, warning, error
 		"css.lint.zeroUnits": "ignore",
-		// Traces the communication between VS Code and the CSS language server.
-		// possible values: off, messages, verbose
-		"css.trace.server": "off",
 		// Enables or disables all validations.
 		"less.validate": true,
 		// Insert semicolon at end of line when completing CSS properties.
