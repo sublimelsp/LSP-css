@@ -42,93 +42,227 @@
 		"dataPaths": [],
 	},
 	"settings": {
-		"css": {
-			"customData": [],
-			"completion": {
-				"triggerPropertyValueCompletion": true,
-				"completePropertyWithSemicolon": true,
-			},
-			"validate": true,
-			"lint": {
-				"compatibleVendorPrefixes": "ignore",
-				"vendorPrefix": "warning",
-				"duplicateProperties": "ignore",
-				"emptyRules": "warning",
-				"importStatement": "ignore",
-				"boxModel": "ignore",
-				"universalSelector": "ignore",
-				"zeroUnits": "ignore",
-				"fontFaceProperties": "warning",
-				"hexColorLength": "error",
-				"argumentsInColorFunction": "error",
-				"unknownProperties": "warning",
-				"validProperties": [],
-				"ieHack": "ignore",
-				"unknownVendorSpecificProperties": "ignore",
-				"propertyIgnoredDueToDisplay": "warning",
-				"important": "ignore",
-				"float": "ignore",
-				"idSelector": "ignore",
-				"unknownAtRules": "warning",
-			},
-		},
-		"scss": {
-			"completion": {
-				"triggerPropertyValueCompletion": true,
-				"completePropertyWithSemicolon": true,
-			},
-			"validate": true,
-			"lint": {
-				"compatibleVendorPrefixes": "ignore",
-				"vendorPrefix": "warning",
-				"duplicateProperties": "ignore",
-				"emptyRules": "warning",
-				"importStatement": "ignore",
-				"boxModel": "ignore",
-				"universalSelector": "ignore",
-				"zeroUnits": "ignore",
-				"fontFaceProperties": "warning",
-				"hexColorLength": "error",
-				"argumentsInColorFunction": "error",
-				"unknownProperties": "warning",
-				"validProperties": [],
-				"ieHack": "ignore",
-				"unknownVendorSpecificProperties": "ignore",
-				"propertyIgnoredDueToDisplay": "warning",
-				"important": "ignore",
-				"float": "ignore",
-				"idSelector": "ignore",
-				"unknownAtRules": "warning",
-			},
-		},
-		"less": {
-			"completion": {
-				"triggerPropertyValueCompletion": true,
-				"completePropertyWithSemicolon": true,
-			},
-			"validate": true,
-			"lint": {
-				"compatibleVendorPrefixes": "ignore",
-				"vendorPrefix": "warning",
-				"duplicateProperties": "ignore",
-				"emptyRules": "warning",
-				"importStatement": "ignore",
-				"boxModel": "ignore",
-				"universalSelector": "ignore",
-				"zeroUnits": "ignore",
-				"fontFaceProperties": "warning",
-				"hexColorLength": "error",
-				"argumentsInColorFunction": "error",
-				"unknownProperties": "warning",
-				"validProperties": [],
-				"ieHack": "ignore",
-				"unknownVendorSpecificProperties": "ignore",
-				"propertyIgnoredDueToDisplay": "warning",
-				"important": "ignore",
-				"float": "ignore",
-				"idSelector": "ignore",
-				"unknownAtRules": "warning",
-			},
-		},
+		// Enables or disables all validations.
+		"css.validate": true,
+		// Insert semicolon at end of line when completing CSS properties.
+		"css.completion.completePropertyWithSemicolon": true,
+		// By default, VS Code triggers property value completion after selecting a CSS property. Use this setting to
+		// disable this behavior.
+		"css.completion.triggerPropertyValueCompletion": true,
+		// A list of relative file paths pointing to JSON files following the [custom data
+		// format](https://github.com/microsoft/vscode-css-languageservice/blob/master/docs/customData.md).
+		// VS Code loads custom data on startup to enhance its CSS support for the custom CSS properties, at directives,
+		// pseudo classes and pseudo elements you specify in the JSON files.
+		// The file paths are relative to workspace and only workspace folder settings are considered.
+		"css.customData": [],
+		// Show tag and attribute documentation in CSS hovers.
+		"css.hover.documentation": true,
+		// Show references to MDN in CSS hovers.
+		"css.hover.references": true,
+		// Invalid number of parameters.
+		// possible values: ignore, warning, error
+		"css.lint.argumentsInColorFunction": "error",
+		// Do not use `width` or `height` when using `padding` or `border`.
+		// possible values: ignore, warning, error
+		"css.lint.boxModel": "ignore",
+		// When using a vendor-specific prefix make sure to also include all other vendor-specific properties.
+		// possible values: ignore, warning, error
+		"css.lint.compatibleVendorPrefixes": "ignore",
+		// Do not use duplicate style definitions.
+		// possible values: ignore, warning, error
+		"css.lint.duplicateProperties": "ignore",
+		// Do not use empty rulesets.
+		// possible values: ignore, warning, error
+		"css.lint.emptyRules": "warning",
+		// Avoid using `float`. Floats lead to fragile CSS that is easy to break if one aspect of the layout changes.
+		// possible values: ignore, warning, error
+		"css.lint.float": "ignore",
+		// `@font-face` rule must define `src` and `font-family` properties.
+		// possible values: ignore, warning, error
+		"css.lint.fontFaceProperties": "warning",
+		// Hex colors must consist of three or six hex numbers.
+		// possible values: ignore, warning, error
+		"css.lint.hexColorLength": "error",
+		// Selectors should not contain IDs because these rules are too tightly coupled with the HTML.
+		// possible values: ignore, warning, error
+		"css.lint.idSelector": "ignore",
+		// IE hacks are only necessary when supporting IE7 and older.
+		// possible values: ignore, warning, error
+		"css.lint.ieHack": "ignore",
+		// Import statements do not load in parallel.
+		// possible values: ignore, warning, error
+		"css.lint.importStatement": "ignore",
+		// Avoid using `!important`. It is an indication that the specificity of the entire CSS has gotten out of
+		// control and needs to be refactored.
+		// possible values: ignore, warning, error
+		"css.lint.important": "ignore",
+		// Property is ignored due to the display. E.g. with `display: inline`, the `width`, `height`, `margin-top`,
+		// `margin-bottom`, and `float` properties have no effect.
+		// possible values: ignore, warning, error
+		"css.lint.propertyIgnoredDueToDisplay": "warning",
+		// The universal selector (`*`) is known to be slow.
+		// possible values: ignore, warning, error
+		"css.lint.universalSelector": "ignore",
+		// Unknown at-rule.
+		// possible values: ignore, warning, error
+		"css.lint.unknownAtRules": "warning",
+		// Unknown property.
+		// possible values: ignore, warning, error
+		"css.lint.unknownProperties": "warning",
+		// Unknown vendor specific property.
+		// possible values: ignore, warning, error
+		"css.lint.unknownVendorSpecificProperties": "ignore",
+		// A list of properties that are not validated against the `unknownProperties` rule.
+		"css.lint.validProperties": [],
+		// When using a vendor-specific prefix, also include the standard property.
+		// possible values: ignore, warning, error
+		"css.lint.vendorPrefix": "warning",
+		// No unit for zero needed.
+		// possible values: ignore, warning, error
+		"css.lint.zeroUnits": "ignore",
+		// Enables or disables all validations.
+		"less.validate": true,
+		// Insert semicolon at end of line when completing CSS properties.
+		"less.completion.completePropertyWithSemicolon": true,
+		// By default, VS Code triggers property value completion after selecting a CSS property. Use this setting to
+		// disable this behavior.
+		"less.completion.triggerPropertyValueCompletion": true,
+		// Show tag and attribute documentation in LESS hovers.
+		"less.hover.documentation": true,
+		// Show references to MDN in LESS hovers.
+		"less.hover.references": true,
+		// Invalid number of parameters.
+		// possible values: ignore, warning, error
+		"less.lint.argumentsInColorFunction": "error",
+		// Do not use `width` or `height` when using `padding` or `border`.
+		// possible values: ignore, warning, error
+		"less.lint.boxModel": "ignore",
+		// When using a vendor-specific prefix make sure to also include all other vendor-specific properties.
+		// possible values: ignore, warning, error
+		"less.lint.compatibleVendorPrefixes": "ignore",
+		// Do not use duplicate style definitions.
+		// possible values: ignore, warning, error
+		"less.lint.duplicateProperties": "ignore",
+		// Do not use empty rulesets.
+		// possible values: ignore, warning, error
+		"less.lint.emptyRules": "warning",
+		// Avoid using `float`. Floats lead to fragile CSS that is easy to break if one aspect of the layout changes.
+		// possible values: ignore, warning, error
+		"less.lint.float": "ignore",
+		// `@font-face` rule must define `src` and `font-family` properties.
+		// possible values: ignore, warning, error
+		"less.lint.fontFaceProperties": "warning",
+		// Hex colors must consist of three or six hex numbers.
+		// possible values: ignore, warning, error
+		"less.lint.hexColorLength": "error",
+		// Selectors should not contain IDs because these rules are too tightly coupled with the HTML.
+		// possible values: ignore, warning, error
+		"less.lint.idSelector": "ignore",
+		// IE hacks are only necessary when supporting IE7 and older.
+		// possible values: ignore, warning, error
+		"less.lint.ieHack": "ignore",
+		// Import statements do not load in parallel.
+		// possible values: ignore, warning, error
+		"less.lint.importStatement": "ignore",
+		// Avoid using `!important`. It is an indication that the specificity of the entire CSS has gotten out of
+		// control and needs to be refactored.
+		// possible values: ignore, warning, error
+		"less.lint.important": "ignore",
+		// Property is ignored due to the display. E.g. with `display: inline`, the `width`, `height`, `margin-top`,
+		// `margin-bottom`, and `float` properties have no effect.
+		// possible values: ignore, warning, error
+		"less.lint.propertyIgnoredDueToDisplay": "warning",
+		// The universal selector (`*`) is known to be slow.
+		// possible values: ignore, warning, error
+		"less.lint.universalSelector": "ignore",
+		// Unknown at-rule.
+		// possible values: ignore, warning, error
+		"less.lint.unknownAtRules": "warning",
+		// Unknown property.
+		// possible values: ignore, warning, error
+		"less.lint.unknownProperties": "warning",
+		// Unknown vendor specific property.
+		// possible values: ignore, warning, error
+		"less.lint.unknownVendorSpecificProperties": "ignore",
+		// A list of properties that are not validated against the `unknownProperties` rule.
+		"less.lint.validProperties": [],
+		// When using a vendor-specific prefix, also include the standard property.
+		// possible values: ignore, warning, error
+		"less.lint.vendorPrefix": "warning",
+		// No unit for zero needed.
+		// possible values: ignore, warning, error
+		"less.lint.zeroUnits": "ignore",
+		// Enables or disables all validations.
+		"scss.validate": true,
+		// Insert semicolon at end of line when completing CSS properties.
+		"scss.completion.completePropertyWithSemicolon": true,
+		// By default, VS Code triggers property value completion after selecting a CSS property. Use this setting to
+		// disable this behavior.
+		"scss.completion.triggerPropertyValueCompletion": true,
+		// Show tag and attribute documentation in SCSS hovers.
+		"scss.hover.documentation": true,
+		// Show references to MDN in SCSS hovers.
+		"scss.hover.references": true,
+		// Invalid number of parameters.
+		// possible values: ignore, warning, error
+		"scss.lint.argumentsInColorFunction": "error",
+		// Do not use `width` or `height` when using `padding` or `border`.
+		// possible values: ignore, warning, error
+		"scss.lint.boxModel": "ignore",
+		// When using a vendor-specific prefix make sure to also include all other vendor-specific properties.
+		// possible values: ignore, warning, error
+		"scss.lint.compatibleVendorPrefixes": "ignore",
+		// Do not use duplicate style definitions.
+		// possible values: ignore, warning, error
+		"scss.lint.duplicateProperties": "ignore",
+		// Do not use empty rulesets.
+		// possible values: ignore, warning, error
+		"scss.lint.emptyRules": "warning",
+		// Avoid using `float`. Floats lead to fragile CSS that is easy to break if one aspect of the layout changes.
+		// possible values: ignore, warning, error
+		"scss.lint.float": "ignore",
+		// `@font-face` rule must define `src` and `font-family` properties.
+		// possible values: ignore, warning, error
+		"scss.lint.fontFaceProperties": "warning",
+		// Hex colors must consist of three or six hex numbers.
+		// possible values: ignore, warning, error
+		"scss.lint.hexColorLength": "error",
+		// Selectors should not contain IDs because these rules are too tightly coupled with the HTML.
+		// possible values: ignore, warning, error
+		"scss.lint.idSelector": "ignore",
+		// IE hacks are only necessary when supporting IE7 and older.
+		// possible values: ignore, warning, error
+		"scss.lint.ieHack": "ignore",
+		// Import statements do not load in parallel.
+		// possible values: ignore, warning, error
+		"scss.lint.importStatement": "ignore",
+		// Avoid using `!important`. It is an indication that the specificity of the entire CSS has gotten out of
+		// control and needs to be refactored.
+		// possible values: ignore, warning, error
+		"scss.lint.important": "ignore",
+		// Property is ignored due to the display. E.g. with `display: inline`, the `width`, `height`, `margin-top`,
+		// `margin-bottom`, and `float` properties have no effect.
+		// possible values: ignore, warning, error
+		"scss.lint.propertyIgnoredDueToDisplay": "warning",
+		// The universal selector (`*`) is known to be slow.
+		// possible values: ignore, warning, error
+		"scss.lint.universalSelector": "ignore",
+		// Unknown at-rule.
+		// possible values: ignore, warning, error
+		"scss.lint.unknownAtRules": "warning",
+		// Unknown property.
+		// possible values: ignore, warning, error
+		"scss.lint.unknownProperties": "warning",
+		// Unknown vendor specific property.
+		// possible values: ignore, warning, error
+		"scss.lint.unknownVendorSpecificProperties": "ignore",
+		// A list of properties that are not validated against the `unknownProperties` rule.
+		"scss.lint.validProperties": [],
+		// When using a vendor-specific prefix, also include the standard property.
+		// possible values: ignore, warning, error
+		"scss.lint.vendorPrefix": "warning",
+		// No unit for zero needed.
+		// possible values: ignore, warning, error
+		"scss.lint.zeroUnits": "ignore",
 	},
 }
