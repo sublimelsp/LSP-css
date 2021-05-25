@@ -248,16 +248,6 @@
                       ],
                       "type": "string"
                     },
-                    "css.trace.server": {
-                      "default": "off",
-                      "description": "Traces the communication between VS Code and the CSS language server.",
-                      "enum": [
-                        "off",
-                        "messages",
-                        "verbose"
-                      ],
-                      "type": "string"
-                    },
                     "css.validate": {
                       "default": true,
                       "description": "Enables or disables all validations.",
