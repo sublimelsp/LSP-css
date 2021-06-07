@@ -1,6 +1,6 @@
 # LSP-css
 
-CSS, SCSS, LESS support for Sublime's LSP plugin provided through [vscode-css-languageserver](https://github.com/vscode-langservers/vscode-css-languageserver).
+CSS, SCSS, LESS support for Sublime's LSP plugin provided through [VS Code's CSS language server](https://github.com/microsoft/vscode/tree/main/extensions/css-language-features/server).
 
 ### Installation
 
