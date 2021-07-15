@@ -15,4 +15,17 @@ console.error = connection.console.error.bind(connection.console);
 process.on('unhandledRejection', (e) => {
     connection.console.error(runner_1.formatError(`Unhandled exception`, e));
 });
-cssServer_1.startServer(connection, { file: nodeFs_1.getNodeFSRequestService() });
+const runtime = {
+    timer: {
+        setImmediate(callback, ...args) {
+            const handle = setImmediate(callback, ...args);
+            return { dispose: () => clearImmediate(handle) };
+        },
+        setTimeout(callback, ms, ...args) {
+            const handle = setTimeout(callback, ms, ...args);
+            return { dispose: () => clearTimeout(handle) };
+        }
+    },
+    file: nodeFs_1.getNodeFSRequestService()
+};
+cssServer_1.startServer(connection, runtime);

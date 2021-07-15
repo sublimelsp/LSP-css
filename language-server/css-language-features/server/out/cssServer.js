@@ -138,13 +138,13 @@ function startServer(connection, runtime) {
     function cleanPendingValidation(textDocument) {
         const request = pendingValidationRequests[textDocument.uri];
         if (request) {
-            clearTimeout(request);
+            request.dispose();
             delete pendingValidationRequests[textDocument.uri];
         }
     }
     function triggerValidation(textDocument) {
         cleanPendingValidation(textDocument);
-        pendingValidationRequests[textDocument.uri] = setTimeout(() => {
+        pendingValidationRequests[textDocument.uri] = runtime.timer.setTimeout(() => {
             delete pendingValidationRequests[textDocument.uri];
             validateTextDocument(textDocument);
         }, validationDelayMs);
@@ -168,7 +168,7 @@ function startServer(connection, runtime) {
         });
     }
     connection.onCompletion((textDocumentPosition, token) => {
-        return runner_1.runSafeAsync(async () => {
+        return runner_1.runSafeAsync(runtime, async () => {
             const document = documents.get(textDocumentPosition.textDocument.uri);
             if (document) {
                 const [settings,] = await Promise.all([getDocumentSettings(document), dataProvidersReady]);
@@ -180,7 +180,7 @@ function startServer(connection, runtime) {
         }, null, `Error while computing completions for ${textDocumentPosition.textDocument.uri}`, token);
     });
     connection.onHover((textDocumentPosition, token) => {
-        return runner_1.runSafeAsync(async () => {
+        return runner_1.runSafeAsync(runtime, async () => {
             const document = documents.get(textDocumentPosition.textDocument.uri);
             if (document) {
                 const [settings,] = await Promise.all([getDocumentSettings(document), dataProvidersReady]);
@@ -191,7 +191,7 @@ function startServer(connection, runtime) {
         }, null, `Error while computing hover for ${textDocumentPosition.textDocument.uri}`, token);
     });
     connection.onDocumentSymbol((documentSymbolParams, token) => {
-        return runner_1.runSafeAsync(async () => {
+        return runner_1.runSafeAsync(runtime, async () => {
             const document = documents.get(documentSymbolParams.textDocument.uri);
             if (document) {
                 await dataProvidersReady;
@@ -202,7 +202,7 @@ function startServer(connection, runtime) {
         }, [], `Error while computing document symbols for ${documentSymbolParams.textDocument.uri}`, token);
     });
     connection.onDefinition((documentDefinitionParams, token) => {
-        return runner_1.runSafeAsync(async () => {
+        return runner_1.runSafeAsync(runtime, async () => {
             const document = documents.get(documentDefinitionParams.textDocument.uri);
             if (document) {
                 await dataProvidersReady;
@@ -213,7 +213,7 @@ function startServer(connection, runtime) {
         }, null, `Error while computing definitions for ${documentDefinitionParams.textDocument.uri}`, token);
     });
     connection.onDocumentHighlight((documentHighlightParams, token) => {
-        return runner_1.runSafeAsync(async () => {
+        return runner_1.runSafeAsync(runtime, async () => {
             const document = documents.get(documentHighlightParams.textDocument.uri);
             if (document) {
                 await dataProvidersReady;
@@ -224,7 +224,7 @@ function startServer(connection, runtime) {
         }, [], `Error while computing document highlights for ${documentHighlightParams.textDocument.uri}`, token);
     });
     connection.onDocumentLinks(async (documentLinkParams, token) => {
-        return runner_1.runSafeAsync(async () => {
+        return runner_1.runSafeAsync(runtime, async () => {
             const document = documents.get(documentLinkParams.textDocument.uri);
             if (document) {
                 await dataProvidersReady;
@@ -236,7 +236,7 @@ function startServer(connection, runtime) {
         }, [], `Error while computing document links for ${documentLinkParams.textDocument.uri}`, token);
     });
     connection.onReferences((referenceParams, token) => {
-        return runner_1.runSafeAsync(async () => {
+        return runner_1.runSafeAsync(runtime, async () => {
             const document = documents.get(referenceParams.textDocument.uri);
             if (document) {
                 await dataProvidersReady;
@@ -247,7 +247,7 @@ function startServer(connection, runtime) {
         }, [], `Error while computing references for ${referenceParams.textDocument.uri}`, token);
     });
     connection.onCodeAction((codeActionParams, token) => {
-        return runner_1.runSafeAsync(async () => {
+        return runner_1.runSafeAsync(runtime, async () => {
             const document = documents.get(codeActionParams.textDocument.uri);
             if (document) {
                 await dataProvidersReady;
@@ -258,7 +258,7 @@ function startServer(connection, runtime) {
         }, [], `Error while computing code actions for ${codeActionParams.textDocument.uri}`, token);
     });
     connection.onDocumentColor((params, token) => {
-        return runner_1.runSafeAsync(async () => {
+        return runner_1.runSafeAsync(runtime, async () => {
             const document = documents.get(params.textDocument.uri);
             if (document) {
                 await dataProvidersReady;
@@ -269,7 +269,7 @@ function startServer(connection, runtime) {
         }, [], `Error while computing document colors for ${params.textDocument.uri}`, token);
     });
     connection.onColorPresentation((params, token) => {
-        return runner_1.runSafeAsync(async () => {
+        return runner_1.runSafeAsync(runtime, async () => {
             const document = documents.get(params.textDocument.uri);
             if (document) {
                 await dataProvidersReady;
@@ -280,7 +280,7 @@ function startServer(connection, runtime) {
         }, [], `Error while computing color presentations for ${params.textDocument.uri}`, token);
     });
     connection.onRenameRequest((renameParameters, token) => {
-        return runner_1.runSafeAsync(async () => {
+        return runner_1.runSafeAsync(runtime, async () => {
             const document = documents.get(renameParameters.textDocument.uri);
             if (document) {
                 await dataProvidersReady;
@@ -291,7 +291,7 @@ function startServer(connection, runtime) {
         }, null, `Error while computing renames for ${renameParameters.textDocument.uri}`, token);
     });
     connection.onFoldingRanges((params, token) => {
-        return runner_1.runSafeAsync(async () => {
+        return runner_1.runSafeAsync(runtime, async () => {
             const document = documents.get(params.textDocument.uri);
             if (document) {
                 await dataProvidersReady;
@@ -301,7 +301,7 @@ function startServer(connection, runtime) {
         }, null, `Error while computing folding ranges for ${params.textDocument.uri}`, token);
     });
     connection.onSelectionRanges((params, token) => {
-        return runner_1.runSafeAsync(async () => {
+        return runner_1.runSafeAsync(runtime, async () => {
             const document = documents.get(params.textDocument.uri);
             const positions = params.positions;
             if (document) {
