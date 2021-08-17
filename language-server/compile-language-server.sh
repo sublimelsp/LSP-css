@@ -52,7 +52,9 @@ popd || exit
 pushd "${SRC_DIR}" || exit
 
 npm install
-npm install -D typescript
+
+# @see https://github.com/microsoft/vscode/blob/main/extensions/package.json
+npm install -D typescript@^4.4.1-rc
 
 popd || exit
 
@@ -63,17 +65,43 @@ popd || exit
 
 pushd "${SRC_DIR}" || exit
 
+# @see https://github.com/microsoft/vscode/blob/main/extensions/tsconfig.base.json
 cat << EOF > tsconfig.json
 {
     "compilerOptions": {
-        "target": "es2018",
+        "target": "es2020",
+        "lib": [
+            "ES2016",
+            "ES2017.Object",
+            "ES2017.String",
+            "ES2017.Intl",
+            "ES2017.TypedArrays",
+            "ES2018.AsyncIterable",
+            "ES2018.AsyncGenerator",
+            "ES2018.Promise",
+            "ES2018.Regexp",
+            "ES2018.Intl",
+            "ES2019.Array",
+            "ES2019.Object",
+            "ES2019.String",
+            "ES2019.Symbol",
+            "ES2020.BigInt",
+            "ES2020.Promise",
+            "ES2020.String",
+            "ES2020.Symbol.WellKnown",
+            "ES2020.Intl"
+        ],
         "module": "commonjs",
         "strict": true,
+        "exactOptionalPropertyTypes": false,
+        "useUnknownInCatchVariables": false,
         "alwaysStrict": true,
         "noImplicitAny": true,
         "noImplicitReturns": true,
+        "noImplicitOverride": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
+        "forceConsistentCasingInFileNames": true,
         "outDir": "./out"
     },
     "files": [
