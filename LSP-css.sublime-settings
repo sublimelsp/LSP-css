@@ -1,5 +1,6 @@
 {
 	"command": ["${node_bin}", "${server_path}", "--stdio"],
+	"schemes": ["file", "buffer", "res"],
 	"languages": [
 		{
 			"languageId": "css",
