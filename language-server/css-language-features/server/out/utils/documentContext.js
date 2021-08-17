@@ -11,10 +11,10 @@ function getDocumentContext(documentUri, workspaceFolders) {
     function getRootFolder() {
         for (let folder of workspaceFolders) {
             let folderURI = folder.uri;
-            if (!strings_1.endsWith(folderURI, '/')) {
+            if (!(0, strings_1.endsWith)(folderURI, '/')) {
                 folderURI = folderURI + '/';
             }
-            if (strings_1.startsWith(documentUri, folderURI)) {
+            if ((0, strings_1.startsWith)(documentUri, folderURI)) {
                 return folderURI;
             }
         }

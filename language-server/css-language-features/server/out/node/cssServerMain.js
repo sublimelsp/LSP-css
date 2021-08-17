@@ -9,11 +9,11 @@ const runner_1 = require("../utils/runner");
 const cssServer_1 = require("../cssServer");
 const nodeFs_1 = require("./nodeFs");
 // Create a connection for the server.
-const connection = node_1.createConnection();
+const connection = (0, node_1.createConnection)();
 console.log = connection.console.log.bind(connection.console);
 console.error = connection.console.error.bind(connection.console);
 process.on('unhandledRejection', (e) => {
-    connection.console.error(runner_1.formatError(`Unhandled exception`, e));
+    connection.console.error((0, runner_1.formatError)(`Unhandled exception`, e));
 });
 const runtime = {
     timer: {
@@ -26,6 +26,6 @@ const runtime = {
             return { dispose: () => clearTimeout(handle) };
         }
     },
-    file: nodeFs_1.getNodeFSRequestService()
+    file: (0, nodeFs_1.getNodeFSRequestService)()
 };
-cssServer_1.startServer(connection, runtime);
+(0, cssServer_1.startServer)(connection, runtime);
