@@ -1,3 +1,4 @@
+from LSP.plugin.core.typing import Tuple
 from lsp_utils import NpmClientHandler
 import os
 
@@ -21,3 +22,8 @@ class LspCssPlugin(NpmClientHandler):
         "node",
         "cssServerMain.js",
     )
+
+    @classmethod
+    def minimum_node_version(cls) -> Tuple[int, int, int]:
+        # this should be aligned with VSCode's Nodejs version
+        return (14, 0, 0)
