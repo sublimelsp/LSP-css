@@ -1,2 +1,5 @@
-# download source codes
-/vscode-css-languageserver/
+/node_modules/
+
+# downloaded source codes
+/vscode-*/
+/vscode/

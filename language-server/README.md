@@ -1,6 +1,6 @@
 # Package Development
 
-Here is pre-built [vscode-css-languageserver](https://github.com/vscode-langservers/vscode-css-languageserver).
+Here is pre-built [VS Code's CSS language server](https://github.com/microsoft/vscode/tree/main/extensions/css-language-features/server).
 
 You don't have to go here if you are just an end user.
 

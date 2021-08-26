@@ -6,7 +6,7 @@ GITHUB_REPO_NAME=$(echo "${GITHUB_REPO_URL}" | command grep -oE '[^/]*$')
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 REPO_DIR="${SCRIPT_DIR}"
 SRC_DIR="${REPO_DIR}/${GITHUB_REPO_NAME}/extensions/css-language-features/server"
-DIST_DIR="${REPO_DIR}/css-language-features/server"
+DIST_DIR="${REPO_DIR}/out"
 
 
 # -------- #
@@ -16,8 +16,10 @@ DIST_DIR="${REPO_DIR}/css-language-features/server"
 pushd "${REPO_DIR}" || exit
 
 rm -rf \
-    "css-language-features/" \
-    "package.json" "package-lock.json"
+    "${DIST_DIR}" \
+    "package-lock.json" \
+    "package.json" \
+    --
 
 popd || exit
 
@@ -54,7 +56,7 @@ pushd "${SRC_DIR}" || exit
 npm install
 
 # @see https://github.com/microsoft/vscode/blob/main/extensions/package.json
-npm install -D typescript@^4.4.1-rc
+npm install typescript@^4.4.1-rc
 
 popd || exit
 
@@ -65,52 +67,20 @@ popd || exit
 
 pushd "${SRC_DIR}" || exit
 
-# @see https://github.com/microsoft/vscode/blob/main/extensions/tsconfig.base.json
-cat << EOF > tsconfig.json
+# we only need the server for Node.js environment
+cat << EOF > tsconfig.mod.json
 {
+    "extends": "./tsconfig.json",
     "compilerOptions": {
-        "target": "es2020",
-        "lib": [
-            "ES2016",
-            "ES2017.Object",
-            "ES2017.String",
-            "ES2017.Intl",
-            "ES2017.TypedArrays",
-            "ES2018.AsyncIterable",
-            "ES2018.AsyncGenerator",
-            "ES2018.Promise",
-            "ES2018.Regexp",
-            "ES2018.Intl",
-            "ES2019.Array",
-            "ES2019.Object",
-            "ES2019.String",
-            "ES2019.Symbol",
-            "ES2020.BigInt",
-            "ES2020.Promise",
-            "ES2020.String",
-            "ES2020.Symbol.WellKnown",
-            "ES2020.Intl"
-        ],
-        "module": "commonjs",
-        "strict": true,
-        "exactOptionalPropertyTypes": false,
-        "useUnknownInCatchVariables": false,
-        "alwaysStrict": true,
-        "noImplicitAny": true,
-        "noImplicitReturns": true,
-        "noImplicitOverride": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
-        "forceConsistentCasingInFileNames": true,
         "outDir": "./out"
     },
-    "files": [
+    "include": [
         "src/node/cssServerMain.ts"
     ]
 }
 EOF
 
-npx tsc --newLine LF -p .
+npx tsc --newLine LF -p tsconfig.mod.json
 
 popd || exit
 
@@ -120,8 +90,6 @@ popd || exit
 # -------------------- #
 
 pushd "${REPO_DIR}" || exit
-
-mkdir -p "${DIST_DIR}"
 
 cp -rf "${SRC_DIR}/out" "${DIST_DIR}"
 cp "${SRC_DIR}/package.json" .
