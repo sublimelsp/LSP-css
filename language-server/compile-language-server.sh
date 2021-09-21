@@ -6,7 +6,7 @@ GITHUB_REPO_NAME=$(echo "${GITHUB_REPO_URL}" | command grep -oE '[^/]*$')
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 REPO_DIR="${SCRIPT_DIR}"
 SRC_DIR="${REPO_DIR}/${GITHUB_REPO_NAME}/extensions/css-language-features/server"
-DIST_DIR="${REPO_DIR}/out"
+DIST_DIR="${REPO_DIR}/css-language-features/server"
 
 
 # -------- #
@@ -56,7 +56,7 @@ pushd "${SRC_DIR}" || exit
 npm install
 
 # @see https://github.com/microsoft/vscode/blob/main/extensions/package.json
-npm install -D typescript@^4.4.2
+npm install -D typescript@^4.4.3
 
 popd || exit
 
@@ -90,6 +90,8 @@ popd || exit
 # -------------------- #
 
 pushd "${REPO_DIR}" || exit
+
+mkdir -p "${DIST_DIR}"
 
 cp -rf "${SRC_DIR}/out" "${DIST_DIR}"
 cp "${SRC_DIR}/package.json" .

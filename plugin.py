@@ -16,6 +16,8 @@ class LspCssPlugin(NpmClientHandler):
     server_directory = "language-server"
     server_binary_path = os.path.join(
         server_directory,
+        "css-language-features",
+        "server",
         "out",
         "node",
         "cssServerMain.js",
