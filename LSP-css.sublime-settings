@@ -1,36 +1,6 @@
 {
 	"command": ["${node_bin}", "${server_path}", "--stdio"],
 	"schemes": ["file", "buffer", "res"],
-	"languages": [
-		{
-			"languageId": "css",
-			"scopes": [
-				"source.css",
-			],
-			"syntaxes": [
-				"Packages/CSS/CSS.sublime-syntax",
-				"Packages/CSS3/CSS3.sublime-syntax",
-			],
-		},
-		{
-			"languageId": "scss",
-			"scopes": [
-				"source.scss",
-			],
-			"syntaxes": [
-				"Packages/Sass/Syntaxes/SCSS.sublime-syntax",
-			],
-		},
-		{
-			"languageId": "less",
-			"scopes": [
-				"source.less",
-			],
-			"syntaxes": [
-				"Packages/LESS/Syntaxes/LESS.sublime-syntax",
-			],
-		},
-	],
 	// "disabled_capabilities" is ST4-only.
 	// If you are on ST3, it's in LSP's configuration and can't be set client-wise.
 	"disabled_capabilities": {
@@ -266,4 +236,37 @@
 		// possible values: ignore, warning, error
 		"scss.lint.zeroUnits": "ignore",
 	},
+	// ST4
+	"selector": "source.css | source.scss | source.less",
+	// ST3
+	"languages": [
+		{
+			"languageId": "css",
+			"scopes": [
+				"source.css",
+			],
+			"syntaxes": [
+				"Packages/CSS/CSS.sublime-syntax",
+				"Packages/CSS3/CSS3.sublime-syntax",
+			],
+		},
+		{
+			"languageId": "scss",
+			"scopes": [
+				"source.scss",
+			],
+			"syntaxes": [
+				"Packages/Sass/Syntaxes/SCSS.sublime-syntax",
+			],
+		},
+		{
+			"languageId": "less",
+			"scopes": [
+				"source.less",
+			],
+			"syntaxes": [
+				"Packages/LESS/Syntaxes/LESS.sublime-syntax",
+			],
+		},
+	],
 }
