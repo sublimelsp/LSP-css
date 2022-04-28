@@ -39,6 +39,48 @@
                       "markdownDescription": "A list of relative file paths pointing to JSON files following the [custom data format](https://github.com/microsoft/vscode-css-languageservice/blob/master/docs/customData.md).\n\nVS Code loads custom data on startup to enhance its CSS support for the custom CSS properties, at directives, pseudo classes and pseudo elements you specify in the JSON files.\n\nThe file paths are relative to workspace and only workspace folder settings are considered.",
                       "type": "array"
                     },
+                    "css.format.braceStyle": {
+                      "default": "collapse",
+                      "enum": [
+                        "collapse",
+                        "expand"
+                      ],
+                      "markdownDescription": "Put braces on the same line as rules (`collapse`) or put braces on own line (`expand`).",
+                      "type": "string"
+                    },
+                    "css.format.enable": {
+                      "default": true,
+                      "description": "Enable/disable default CSS formatter.",
+                      "type": "boolean"
+                    },
+                    "css.format.maxPreserveNewLines": {
+                      "default": null,
+                      "markdownDescription": "Maximum number of line breaks to be preserved in one chunk, when `#css.format.preserveNewLines#` is enabled.",
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "css.format.newlineBetweenRules": {
+                      "default": true,
+                      "markdownDescription": "Separate rulesets by a blank line.",
+                      "type": "boolean"
+                    },
+                    "css.format.newlineBetweenSelectors": {
+                      "default": true,
+                      "markdownDescription": "Separate selectors with a new line.",
+                      "type": "boolean"
+                    },
+                    "css.format.preserveNewLines": {
+                      "default": true,
+                      "markdownDescription": "Whether existing line breaks before elements should be preserved.",
+                      "type": "boolean"
+                    },
+                    "css.format.spaceAroundSelectorSeparator": {
+                      "default": false,
+                      "markdownDescription": "Ensure a space character around selector separators '>', '+', '~' (e.g. `a > b`).",
+                      "type": "boolean"
+                    },
                     "css.hover.documentation": {
                       "default": true,
                       "description": "Show tag and attribute documentation in CSS hovers.",
@@ -248,6 +290,16 @@
                       ],
                       "type": "string"
                     },
+                    "css.trace.server": {
+                      "default": "off",
+                      "description": "Traces the communication between VS Code and the CSS language server.",
+                      "enum": [
+                        "off",
+                        "messages",
+                        "verbose"
+                      ],
+                      "type": "string"
+                    },
                     "css.validate": {
                       "default": true,
                       "description": "Enables or disables all validations.",
@@ -261,6 +313,48 @@
                     "less.completion.triggerPropertyValueCompletion": {
                       "default": true,
                       "description": "By default, VS Code triggers property value completion after selecting a CSS property. Use this setting to disable this behavior.",
+                      "type": "boolean"
+                    },
+                    "less.format.braceStyle": {
+                      "default": "collapse",
+                      "enum": [
+                        "collapse",
+                        "expand"
+                      ],
+                      "markdownDescription": "Put braces on the same line as rules (`collapse`) or put braces on own line (`expand`).",
+                      "type": "string"
+                    },
+                    "less.format.enable": {
+                      "default": true,
+                      "description": "Enable/disable default LESS formatter.",
+                      "type": "boolean"
+                    },
+                    "less.format.maxPreserveNewLines": {
+                      "default": null,
+                      "markdownDescription": "Maximum number of line breaks to be preserved in one chunk, when `#less.format.preserveNewLines#` is enabled.",
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "less.format.newlineBetweenRules": {
+                      "default": true,
+                      "markdownDescription": "Separate rulesets by a blank line.",
+                      "type": "boolean"
+                    },
+                    "less.format.newlineBetweenSelectors": {
+                      "default": true,
+                      "markdownDescription": "Separate selectors with a new line.",
+                      "type": "boolean"
+                    },
+                    "less.format.preserveNewLines": {
+                      "default": true,
+                      "markdownDescription": "Whether existing line breaks before elements should be preserved.",
+                      "type": "boolean"
+                    },
+                    "less.format.spaceAroundSelectorSeparator": {
+                      "default": false,
+                      "markdownDescription": "Ensure a space character around selector separators '>', '+', '~' (e.g. `a > b`).",
                       "type": "boolean"
                     },
                     "less.hover.documentation": {
@@ -485,6 +579,48 @@
                     "scss.completion.triggerPropertyValueCompletion": {
                       "default": true,
                       "description": "By default, VS Code triggers property value completion after selecting a CSS property. Use this setting to disable this behavior.",
+                      "type": "boolean"
+                    },
+                    "scss.format.braceStyle": {
+                      "default": "collapse",
+                      "enum": [
+                        "collapse",
+                        "expand"
+                      ],
+                      "markdownDescription": "Put braces on the same line as rules (`collapse`) or put braces on own line (`expand`).",
+                      "type": "string"
+                    },
+                    "scss.format.enable": {
+                      "default": true,
+                      "description": "Enable/disable default SCSS formatter.",
+                      "type": "boolean"
+                    },
+                    "scss.format.maxPreserveNewLines": {
+                      "default": null,
+                      "markdownDescription": "Maximum number of line breaks to be preserved in one chunk, when `#scss.format.preserveNewLines#` is enabled.",
+                      "type": [
+                        "number",
+                        "null"
+                      ]
+                    },
+                    "scss.format.newlineBetweenRules": {
+                      "default": true,
+                      "markdownDescription": "Separate rulesets by a blank line.",
+                      "type": "boolean"
+                    },
+                    "scss.format.newlineBetweenSelectors": {
+                      "default": true,
+                      "markdownDescription": "Separate selectors with a new line.",
+                      "type": "boolean"
+                    },
+                    "scss.format.preserveNewLines": {
+                      "default": true,
+                      "markdownDescription": "Whether existing line breaks before elements should be preserved.",
+                      "type": "boolean"
+                    },
+                    "scss.format.spaceAroundSelectorSeparator": {
+                      "default": false,
+                      "markdownDescription": "Ensure a space character around selector separators '>', '+', '~' (e.g. `a > b`).",
                       "type": "boolean"
                     },
                     "scss.hover.documentation": {

@@ -13,19 +13,36 @@
 		"dataPaths": [],
 	},
 	"settings": {
-		// Enables or disables all validations.
-		"css.validate": true,
 		// Insert semicolon at end of line when completing CSS properties.
 		"css.completion.completePropertyWithSemicolon": true,
-		// By default, VS Code triggers property value completion after selecting a CSS property. Use this setting to
-		// disable this behavior.
+		// By default, VS Code triggers property value completion after selecting a CSS property.
+		// Use this setting to disable this behavior.
 		"css.completion.triggerPropertyValueCompletion": true,
 		// A list of relative file paths pointing to JSON files following the [custom data
-		// format](https://github.com/microsoft/vscode-css-languageservice/blob/master/docs/customData.md).
-		// VS Code loads custom data on startup to enhance its CSS support for the custom CSS properties, at directives,
-		// pseudo classes and pseudo elements you specify in the JSON files.
-		// The file paths are relative to workspace and only workspace folder settings are considered.
+		// format](https://github.com/microsoft/vscode-css-
+		// languageservice/blob/master/docs/customData.md).
+		// VS Code loads custom data on startup to enhance its CSS support for the custom CSS
+		// properties, at directives, pseudo classes and pseudo elements you specify in the JSON
+		// files.
+		// The file paths are relative to workspace and only workspace folder settings are
+		// considered.
 		"css.customData": [],
+		// Put braces on the same line as rules (`collapse`) or put braces on own line (`expand`).
+		// possible values: collapse, expand
+		"css.format.braceStyle": "collapse",
+		// Enable/disable default CSS formatter.
+		"css.format.enable": true,
+		// Maximum number of line breaks to be preserved in one chunk, when
+		// `#css.format.preserveNewLines#` is enabled.
+		"css.format.maxPreserveNewLines": null,
+		// Separate rulesets by a blank line.
+		"css.format.newlineBetweenRules": true,
+		// Separate selectors with a new line.
+		"css.format.newlineBetweenSelectors": true,
+		// Whether existing line breaks before elements should be preserved.
+		"css.format.preserveNewLines": true,
+		// Ensure a space character around selector separators '>', '+', '~' (e.g. `a > b`).
+		"css.format.spaceAroundSelectorSeparator": false,
 		// Show tag and attribute documentation in CSS hovers.
 		"css.hover.documentation": true,
 		// Show references to MDN in CSS hovers.
@@ -36,7 +53,8 @@
 		// Do not use `width` or `height` when using `padding` or `border`.
 		// possible values: ignore, warning, error
 		"css.lint.boxModel": "ignore",
-		// When using a vendor-specific prefix make sure to also include all other vendor-specific properties.
+		// When using a vendor-specific prefix make sure to also include all other vendor-specific
+		// properties.
 		// possible values: ignore, warning, error
 		"css.lint.compatibleVendorPrefixes": "ignore",
 		// Do not use duplicate style definitions.
@@ -45,7 +63,8 @@
 		// Do not use empty rulesets.
 		// possible values: ignore, warning, error
 		"css.lint.emptyRules": "warning",
-		// Avoid using `float`. Floats lead to fragile CSS that is easy to break if one aspect of the layout changes.
+		// Avoid using `float`. Floats lead to fragile CSS that is easy to break if one aspect of
+		// the layout changes.
 		// possible values: ignore, warning, error
 		"css.lint.float": "ignore",
 		// `@font-face` rule must define `src` and `font-family` properties.
@@ -54,7 +73,8 @@
 		// Hex colors must consist of three or six hex numbers.
 		// possible values: ignore, warning, error
 		"css.lint.hexColorLength": "error",
-		// Selectors should not contain IDs because these rules are too tightly coupled with the HTML.
+		// Selectors should not contain IDs because these rules are too tightly coupled with the
+		// HTML.
 		// possible values: ignore, warning, error
 		"css.lint.idSelector": "ignore",
 		// IE hacks are only necessary when supporting IE7 and older.
@@ -63,12 +83,12 @@
 		// Import statements do not load in parallel.
 		// possible values: ignore, warning, error
 		"css.lint.importStatement": "ignore",
-		// Avoid using `!important`. It is an indication that the specificity of the entire CSS has gotten out of
-		// control and needs to be refactored.
+		// Avoid using `!important`. It is an indication that the specificity of the entire CSS has
+		// gotten out of control and needs to be refactored.
 		// possible values: ignore, warning, error
 		"css.lint.important": "ignore",
-		// Property is ignored due to the display. E.g. with `display: inline`, the `width`, `height`, `margin-top`,
-		// `margin-bottom`, and `float` properties have no effect.
+		// Property is ignored due to the display. E.g. with `display: inline`, the `width`,
+		// `height`, `margin-top`, `margin-bottom`, and `float` properties have no effect.
 		// possible values: ignore, warning, error
 		"css.lint.propertyIgnoredDueToDisplay": "warning",
 		// The universal selector (`*`) is known to be slow.
@@ -91,13 +111,32 @@
 		// No unit for zero needed.
 		// possible values: ignore, warning, error
 		"css.lint.zeroUnits": "ignore",
+		// Traces the communication between VS Code and the CSS language server.
+		// possible values: off, messages, verbose
+		"css.trace.server": "off",
 		// Enables or disables all validations.
-		"less.validate": true,
+		"css.validate": true,
 		// Insert semicolon at end of line when completing CSS properties.
 		"less.completion.completePropertyWithSemicolon": true,
-		// By default, VS Code triggers property value completion after selecting a CSS property. Use this setting to
-		// disable this behavior.
+		// By default, VS Code triggers property value completion after selecting a CSS property.
+		// Use this setting to disable this behavior.
 		"less.completion.triggerPropertyValueCompletion": true,
+		// Put braces on the same line as rules (`collapse`) or put braces on own line (`expand`).
+		// possible values: collapse, expand
+		"less.format.braceStyle": "collapse",
+		// Enable/disable default LESS formatter.
+		"less.format.enable": true,
+		// Maximum number of line breaks to be preserved in one chunk, when
+		// `#less.format.preserveNewLines#` is enabled.
+		"less.format.maxPreserveNewLines": null,
+		// Separate rulesets by a blank line.
+		"less.format.newlineBetweenRules": true,
+		// Separate selectors with a new line.
+		"less.format.newlineBetweenSelectors": true,
+		// Whether existing line breaks before elements should be preserved.
+		"less.format.preserveNewLines": true,
+		// Ensure a space character around selector separators '>', '+', '~' (e.g. `a > b`).
+		"less.format.spaceAroundSelectorSeparator": false,
 		// Show tag and attribute documentation in LESS hovers.
 		"less.hover.documentation": true,
 		// Show references to MDN in LESS hovers.
@@ -108,7 +147,8 @@
 		// Do not use `width` or `height` when using `padding` or `border`.
 		// possible values: ignore, warning, error
 		"less.lint.boxModel": "ignore",
-		// When using a vendor-specific prefix make sure to also include all other vendor-specific properties.
+		// When using a vendor-specific prefix make sure to also include all other vendor-specific
+		// properties.
 		// possible values: ignore, warning, error
 		"less.lint.compatibleVendorPrefixes": "ignore",
 		// Do not use duplicate style definitions.
@@ -117,7 +157,8 @@
 		// Do not use empty rulesets.
 		// possible values: ignore, warning, error
 		"less.lint.emptyRules": "warning",
-		// Avoid using `float`. Floats lead to fragile CSS that is easy to break if one aspect of the layout changes.
+		// Avoid using `float`. Floats lead to fragile CSS that is easy to break if one aspect of
+		// the layout changes.
 		// possible values: ignore, warning, error
 		"less.lint.float": "ignore",
 		// `@font-face` rule must define `src` and `font-family` properties.
@@ -126,7 +167,8 @@
 		// Hex colors must consist of three or six hex numbers.
 		// possible values: ignore, warning, error
 		"less.lint.hexColorLength": "error",
-		// Selectors should not contain IDs because these rules are too tightly coupled with the HTML.
+		// Selectors should not contain IDs because these rules are too tightly coupled with the
+		// HTML.
 		// possible values: ignore, warning, error
 		"less.lint.idSelector": "ignore",
 		// IE hacks are only necessary when supporting IE7 and older.
@@ -135,12 +177,12 @@
 		// Import statements do not load in parallel.
 		// possible values: ignore, warning, error
 		"less.lint.importStatement": "ignore",
-		// Avoid using `!important`. It is an indication that the specificity of the entire CSS has gotten out of
-		// control and needs to be refactored.
+		// Avoid using `!important`. It is an indication that the specificity of the entire CSS has
+		// gotten out of control and needs to be refactored.
 		// possible values: ignore, warning, error
 		"less.lint.important": "ignore",
-		// Property is ignored due to the display. E.g. with `display: inline`, the `width`, `height`, `margin-top`,
-		// `margin-bottom`, and `float` properties have no effect.
+		// Property is ignored due to the display. E.g. with `display: inline`, the `width`,
+		// `height`, `margin-top`, `margin-bottom`, and `float` properties have no effect.
 		// possible values: ignore, warning, error
 		"less.lint.propertyIgnoredDueToDisplay": "warning",
 		// The universal selector (`*`) is known to be slow.
@@ -164,12 +206,28 @@
 		// possible values: ignore, warning, error
 		"less.lint.zeroUnits": "ignore",
 		// Enables or disables all validations.
-		"scss.validate": true,
+		"less.validate": true,
 		// Insert semicolon at end of line when completing CSS properties.
 		"scss.completion.completePropertyWithSemicolon": true,
-		// By default, VS Code triggers property value completion after selecting a CSS property. Use this setting to
-		// disable this behavior.
+		// By default, VS Code triggers property value completion after selecting a CSS property.
+		// Use this setting to disable this behavior.
 		"scss.completion.triggerPropertyValueCompletion": true,
+		// Put braces on the same line as rules (`collapse`) or put braces on own line (`expand`).
+		// possible values: collapse, expand
+		"scss.format.braceStyle": "collapse",
+		// Enable/disable default SCSS formatter.
+		"scss.format.enable": true,
+		// Maximum number of line breaks to be preserved in one chunk, when
+		// `#scss.format.preserveNewLines#` is enabled.
+		"scss.format.maxPreserveNewLines": null,
+		// Separate rulesets by a blank line.
+		"scss.format.newlineBetweenRules": true,
+		// Separate selectors with a new line.
+		"scss.format.newlineBetweenSelectors": true,
+		// Whether existing line breaks before elements should be preserved.
+		"scss.format.preserveNewLines": true,
+		// Ensure a space character around selector separators '>', '+', '~' (e.g. `a > b`).
+		"scss.format.spaceAroundSelectorSeparator": false,
 		// Show tag and attribute documentation in SCSS hovers.
 		"scss.hover.documentation": true,
 		// Show references to MDN in SCSS hovers.
@@ -180,7 +238,8 @@
 		// Do not use `width` or `height` when using `padding` or `border`.
 		// possible values: ignore, warning, error
 		"scss.lint.boxModel": "ignore",
-		// When using a vendor-specific prefix make sure to also include all other vendor-specific properties.
+		// When using a vendor-specific prefix make sure to also include all other vendor-specific
+		// properties.
 		// possible values: ignore, warning, error
 		"scss.lint.compatibleVendorPrefixes": "ignore",
 		// Do not use duplicate style definitions.
@@ -189,7 +248,8 @@
 		// Do not use empty rulesets.
 		// possible values: ignore, warning, error
 		"scss.lint.emptyRules": "warning",
-		// Avoid using `float`. Floats lead to fragile CSS that is easy to break if one aspect of the layout changes.
+		// Avoid using `float`. Floats lead to fragile CSS that is easy to break if one aspect of
+		// the layout changes.
 		// possible values: ignore, warning, error
 		"scss.lint.float": "ignore",
 		// `@font-face` rule must define `src` and `font-family` properties.
@@ -198,7 +258,8 @@
 		// Hex colors must consist of three or six hex numbers.
 		// possible values: ignore, warning, error
 		"scss.lint.hexColorLength": "error",
-		// Selectors should not contain IDs because these rules are too tightly coupled with the HTML.
+		// Selectors should not contain IDs because these rules are too tightly coupled with the
+		// HTML.
 		// possible values: ignore, warning, error
 		"scss.lint.idSelector": "ignore",
 		// IE hacks are only necessary when supporting IE7 and older.
@@ -207,12 +268,12 @@
 		// Import statements do not load in parallel.
 		// possible values: ignore, warning, error
 		"scss.lint.importStatement": "ignore",
-		// Avoid using `!important`. It is an indication that the specificity of the entire CSS has gotten out of
-		// control and needs to be refactored.
+		// Avoid using `!important`. It is an indication that the specificity of the entire CSS has
+		// gotten out of control and needs to be refactored.
 		// possible values: ignore, warning, error
 		"scss.lint.important": "ignore",
-		// Property is ignored due to the display. E.g. with `display: inline`, the `width`, `height`, `margin-top`,
-		// `margin-bottom`, and `float` properties have no effect.
+		// Property is ignored due to the display. E.g. with `display: inline`, the `width`,
+		// `height`, `margin-top`, `margin-bottom`, and `float` properties have no effect.
 		// possible values: ignore, warning, error
 		"scss.lint.propertyIgnoredDueToDisplay": "warning",
 		// The universal selector (`*`) is known to be slow.
@@ -235,6 +296,8 @@
 		// No unit for zero needed.
 		// possible values: ignore, warning, error
 		"scss.lint.zeroUnits": "ignore",
+		// Enables or disables all validations.
+		"scss.validate": true,
 	},
 	// ST4
 	"selector": "source.css | source.scss | source.less",
