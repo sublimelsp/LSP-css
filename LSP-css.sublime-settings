@@ -9,8 +9,7 @@
 		// "colorProvider": true,
 	},
 	"initializationOptions": {
-		// @see https://github.com/sublimelsp/LSP-css/pull/2#discussion_r393881421
-		"dataPaths": [],
+		"provideFormatter": true,
 	},
 	"settings": {
 		// Insert semicolon at end of line when completing CSS properties.
