@@ -8,7 +8,7 @@ exports.runSafeAsync = exports.formatError = void 0;
 const vscode_languageserver_1 = require("vscode-languageserver");
 function formatError(message, err) {
     if (err instanceof Error) {
-        let error = err;
+        const error = err;
         return `${message}: ${error.message}\n${error.stack}`;
     }
     else if (typeof err === 'string') {

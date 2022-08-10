@@ -9,7 +9,7 @@ const strings_1 = require("../utils/strings");
 const vscode_uri_1 = require("vscode-uri");
 function getDocumentContext(documentUri, workspaceFolders) {
     function getRootFolder() {
-        for (let folder of workspaceFolders) {
+        for (const folder of workspaceFolders) {
             let folderURI = folder.uri;
             if (!(0, strings_1.endsWith)(folderURI, '/')) {
                 folderURI = folderURI + '/';
@@ -23,7 +23,7 @@ function getDocumentContext(documentUri, workspaceFolders) {
     return {
         resolveReference: (ref, base = documentUri) => {
             if (ref[0] === '/') { // resolve absolute path against the current workspace folder
-                let folderUri = getRootFolder();
+                const folderUri = getRootFolder();
                 if (folderUri) {
                     return folderUri + ref.substr(1);
                 }

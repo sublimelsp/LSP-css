@@ -301,7 +301,6 @@ function startServer(connection, runtime) {
     async function onFormat(textDocument, range, options) {
         const document = documents.get(textDocument.uri);
         if (document) {
-            console.log(JSON.stringify(options));
             const edits = getLanguageService(document).format(document, range ?? getFullRange(document), options);
             if (edits.length > formatterMaxNumberOfEdits) {
                 const newText = vscode_css_languageservice_1.TextDocument.applyEdits(document, edits);

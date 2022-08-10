@@ -39,7 +39,7 @@ var FileType;
 })(FileType = exports.FileType || (exports.FileType = {}));
 function getRequestService(handledSchemas, connection, runtime) {
     const builtInHandlers = {};
-    for (let protocol of handledSchemas) {
+    for (const protocol of handledSchemas) {
         if (protocol === 'file') {
             builtInHandlers[protocol] = runtime.file;
         }
