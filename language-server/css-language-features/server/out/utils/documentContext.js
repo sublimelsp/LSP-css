@@ -25,11 +25,12 @@ function getDocumentContext(documentUri, workspaceFolders) {
             if (ref[0] === '/') { // resolve absolute path against the current workspace folder
                 const folderUri = getRootFolder();
                 if (folderUri) {
-                    return folderUri + ref.substr(1);
+                    return folderUri + ref.substring(1);
                 }
             }
-            base = base.substr(0, base.lastIndexOf('/') + 1);
-            return vscode_uri_1.Utils.resolvePath(vscode_uri_1.URI.parse(base), ref).toString();
+            const baseUri = vscode_uri_1.URI.parse(base);
+            const baseUriDir = baseUri.path.endsWith('/') ? baseUri : vscode_uri_1.Utils.dirname(baseUri);
+            return vscode_uri_1.Utils.resolvePath(baseUriDir, ref).toString(true);
         },
     };
 }

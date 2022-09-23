@@ -48,7 +48,7 @@ function startServer(connection, runtime) {
         if (!Array.isArray(workspaceFolders)) {
             workspaceFolders = [];
             if (params.rootPath) {
-                workspaceFolders.push({ name: '', uri: vscode_uri_1.URI.file(params.rootPath).toString() });
+                workspaceFolders.push({ name: '', uri: vscode_uri_1.URI.file(params.rootPath).toString(true) });
             }
         }
         requestService = (0, requests_1.getRequestService)(initializationOptions?.handledSchemas || ['file'], connection, runtime);
