@@ -56,7 +56,7 @@ pushd "${SRC_DIR}" || exit
 npm install
 
 # @see https://github.com/microsoft/vscode/blob/main/extensions/package.json
-npm install -D typescript@^4.4.3
+npm install -D typescript@^4.8.3
 
 popd || exit
 
@@ -72,6 +72,7 @@ cat << EOF > tsconfig.mod.json
 {
     "extends": "./tsconfig.json",
     "compilerOptions": {
+        "skipLibCheck": true,
         "outDir": "./out"
     },
     "include": [
