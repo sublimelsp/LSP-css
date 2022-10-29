@@ -39,7 +39,7 @@ class LspCssPlugin(NpmClientHandler):
         custom_data_paths = session.config.settings.get('css.customData')  # type: List[str]
         resolved_custom_data_paths = []  # type: List[str]
         for folder in session.get_workspace_folders():
-            # Converting to URI as the server can only handle URIs internally.
+            # Converting to URI as server can't handle reading the content if it's a file path.
             resolved_custom_data_paths.extend(
                 [filename_to_uri(path.abspath(path.join(folder.path, p))) for p in custom_data_paths])
         session.send_notification(CustomDataChangedNotification.create(resolved_custom_data_paths))
