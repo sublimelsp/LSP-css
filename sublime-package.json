@@ -28,7 +28,7 @@
                         "type": "string"
                       },
                       "default": ["file"],
-                      "markdownDescription": "Types of protocols that the server supports for URIs/paths provided through `css.customData`."
+                      "markdownDescription": "Types of protocols that the server supports for URIs provided through `css.customData`."
                     },
                     "provideFormatter": {
                       "type": "boolean",
