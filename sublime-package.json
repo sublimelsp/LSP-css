@@ -18,6 +18,25 @@
           "definitions": {
             "PluginConfig": {
               "properties": {
+                "initializationOptions": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "handledSchemas": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "default": ["file"],
+                      "markdownDescription": "Types of protocols that the server supports for URIs provided through `css.customData`."
+                    },
+                    "provideFormatter": {
+                      "type": "boolean",
+                      "default": true,
+                      "markdownDescription": "Whether server provides formatter capabilities."
+                    }
+                  },
+                },
                 "settings": {
                   "additionalProperties": false,
                   "properties": {

@@ -41,7 +41,8 @@ fi
 temp_zip="src-${ref}.zip"
 curl -L "${GITHUB_REPO_URL}/archive/${ref}.zip" -o "${temp_zip}"
 unzip -z "${temp_zip}" | tr -d '\r' > update-info.log
-unzip "${temp_zip}" && rm -f "${temp_zip}"
+unzip "${temp_zip}"  # ignore errors as there are some special file names that cause them
+rm -f "${temp_zip}" || exit
 mv "${GITHUB_REPO_NAME}-"* "${GITHUB_REPO_NAME}"
 
 popd || exit
@@ -56,7 +57,7 @@ pushd "${SRC_DIR}" || exit
 npm install
 
 # @see https://github.com/microsoft/vscode/blob/main/extensions/package.json
-npm install -D typescript@^4.8.3
+npm install -D typescript@^4.8.4
 
 popd || exit
 
@@ -72,7 +73,6 @@ cat << EOF > tsconfig.mod.json
 {
     "extends": "./tsconfig.json",
     "compilerOptions": {
-        "skipLibCheck": true,
         "outDir": "./out"
     },
     "include": [

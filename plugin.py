@@ -1,6 +1,8 @@
-from LSP.plugin.core.typing import Tuple
-from lsp_utils import NpmClientHandler
-import os
+from .types import CustomDataChangedNotification
+from LSP.plugin import Session, filename_to_uri
+from LSP.plugin.core.typing import List
+from lsp_utils import ApiWrapperInterface, NpmClientHandler
+from os import path
 
 
 def plugin_loaded():
@@ -14,7 +16,7 @@ def plugin_unloaded():
 class LspCssPlugin(NpmClientHandler):
     package_name = __package__
     server_directory = "language-server"
-    server_binary_path = os.path.join(
+    server_binary_path = path.join(
         server_directory,
         "css-language-features",
         "server",
@@ -24,6 +26,20 @@ class LspCssPlugin(NpmClientHandler):
     )
 
     @classmethod
-    def minimum_node_version(cls) -> Tuple[int, int, int]:
-        # this should be aligned with VSCode's Nodejs version
-        return (14, 0, 0)
+    def required_node_version(cls) -> str:
+        return '>=14'
+
+    def on_ready(self, api: ApiWrapperInterface) -> None:
+        session = self.weaksession()
+        if not session:
+            return
+        self.resolve_custom_data_paths(session)
+
+    def resolve_custom_data_paths(self, session: Session) -> None:
+        custom_data_paths = session.config.settings.get('css.customData')  # type: List[str]
+        resolved_custom_data_paths = []  # type: List[str]
+        for folder in session.get_workspace_folders():
+            # Converting to URI as server can't handle reading the content if it's a file path.
+            resolved_custom_data_paths.extend(
+                [filename_to_uri(path.abspath(path.join(folder.path, p))) for p in custom_data_paths])
+        session.send_notification(CustomDataChangedNotification.create(resolved_custom_data_paths))
