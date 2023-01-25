@@ -57,7 +57,7 @@ pushd "${SRC_DIR}" || exit
 npm install
 
 # @see https://github.com/microsoft/vscode/blob/main/extensions/package.json
-npm install -D typescript@^4.8.4
+npm install -D typescript@^4.9.4
 
 popd || exit
 
