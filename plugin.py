@@ -22,7 +22,7 @@ class LspCssPlugin(NpmClientHandler):
         "server",
         "out",
         "node",
-        "cssServerMain.js",
+        "cssServerNodeMain.js",
     )
 
     @classmethod
