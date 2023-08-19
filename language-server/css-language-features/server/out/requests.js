@@ -9,15 +9,15 @@ const vscode_languageserver_1 = require("vscode-languageserver");
 var FsContentRequest;
 (function (FsContentRequest) {
     FsContentRequest.type = new vscode_languageserver_1.RequestType('fs/content');
-})(FsContentRequest = exports.FsContentRequest || (exports.FsContentRequest = {}));
+})(FsContentRequest || (exports.FsContentRequest = FsContentRequest = {}));
 var FsStatRequest;
 (function (FsStatRequest) {
     FsStatRequest.type = new vscode_languageserver_1.RequestType('fs/stat');
-})(FsStatRequest = exports.FsStatRequest || (exports.FsStatRequest = {}));
+})(FsStatRequest || (exports.FsStatRequest = FsStatRequest = {}));
 var FsReadDirRequest;
 (function (FsReadDirRequest) {
     FsReadDirRequest.type = new vscode_languageserver_1.RequestType('fs/readDir');
-})(FsReadDirRequest = exports.FsReadDirRequest || (exports.FsReadDirRequest = {}));
+})(FsReadDirRequest || (exports.FsReadDirRequest = FsReadDirRequest = {}));
 var FileType;
 (function (FileType) {
     /**
@@ -36,7 +36,7 @@ var FileType;
      * A symbolic link to a file.
      */
     FileType[FileType["SymbolicLink"] = 64] = "SymbolicLink";
-})(FileType = exports.FileType || (exports.FileType = {}));
+})(FileType || (exports.FileType = FileType = {}));
 function getRequestService(handledSchemas, connection, runtime) {
     const builtInHandlers = {};
     for (const protocol of handledSchemas) {
