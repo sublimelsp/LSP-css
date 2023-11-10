@@ -1,37 +1,62 @@
 [tool.isort]
-line_length = 120
 profile = 'black'
+line_length = 120
 py_version=38
 skip_glob = [
   ".venv/**",
   "br-*/**",
   "branch-*/**",
   "libs/**",
-  "resources/**",
+  "plugin/libs/**",
   "stubs/**",
   "typings/**",
   "vendor/**",
   "venv/**",
 ]
 
-[tool.pycln]
-all = true
-exclude = '(\.git|\.?venv|\.mypy_cache|br-.*|branch-.*|libs|stubs|typings)/'
+[tool.autoflake]
+quiet = true
+recursive = true
+remove-all-unused-imports = true
+exclude = '\.git,\.?venv,\.mypy_cache,br-.*,branch-.*,libs,stubs,tests/files,typings'
 
 [tool.black]
 line-length = 120
-target-version = ['py38']
+target-version = ['py33']
+preview = true
+# regex
 exclude = '''
 /(
-  \.git |
-  language-server |
-  plugin/libs |
-  resources |
-  stubs |
-  typings |
-  _resources
+  \.git
+  | \.?venv
+  | \.mypy_cache
+  | br-*
+  | branch-*
+  | libs
+  | stubs
+  | tests/files
+  | typings
 )/
 '''
 
 [tool.pyright]
+include = ['./']
+exclude = [
+  '**/__pycache__/',
+  '**/node_modules/',
+  # git-related
+  '**/.git/',
+  '**/br-*/',
+  '**/branch-*/',
+]
+ignore = [
+  '**/.venv',
+  '**/libs',
+]
+stubPath = 'typings'
 pythonVersion = '3.11'
+
+[tool.ruff]
+select = ["E", "F", "W"]
+line-length = 120
+target-version = 'py38'
