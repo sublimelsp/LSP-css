@@ -6,7 +6,7 @@ FilePath = str
 
 
 class CustomDataChangedNotification:
-    Type = 'css/customDataChanged'
+    Type = "css/customDataChanged"
     Params = List[FilePath]
 
     @classmethod
