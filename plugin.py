@@ -1,5 +1,5 @@
 from .types import CustomDataChangedNotification
-from LSP.plugin import Session, filename_to_uri
+from LSP.plugin import filename_to_uri
 from LSP.plugin.core.typing import List
 from lsp_utils import ApiWrapperInterface, NpmClientHandler
 from os import path
@@ -35,7 +35,7 @@ class LspCssPlugin(NpmClientHandler):
             return
         self.resolve_custom_data_paths(session)
 
-    def resolve_custom_data_paths(self, session: Session) -> None:
+    def resolve_custom_data_paths(self, session) -> None:
         custom_data_paths = session.config.settings.get("css.customData")  # type: List[str]
         resolved_custom_data_paths = []  # type: List[str]
         for folder in session.get_workspace_folders():
