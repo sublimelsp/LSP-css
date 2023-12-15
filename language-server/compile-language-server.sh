@@ -57,8 +57,8 @@ pushd "${SRC_DIR}" || exit
 npm install --lockfile-version 2
 
 # @see https://github.com/microsoft/vscode/blob/main/extensions/package.json
-npm install --lockfile-version 2 typescript@^5.2.0-dev.20230807
-npm install --lockfile-version 2 --include=dev @types/node
+ts_version="$( jq '.dependencies.typescript' --raw-output "${REPO_DIR}/${GITHUB_REPO_NAME}/extensions/package.json" )"
+npm install -D --lockfile-version 2 typescript@${ts_version}
 
 popd || exit
 
