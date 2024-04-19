@@ -1,62 +1,32 @@
-[tool.isort]
-profile = 'black'
-line_length = 120
-py_version=38
-skip_glob = [
-  ".venv/**",
-  "br-*/**",
-  "branch-*/**",
-  "libs/**",
-  "plugin/libs/**",
-  "stubs/**",
-  "typings/**",
-  "vendor/**",
-  "venv/**",
-]
-
-[tool.autoflake]
-quiet = true
-recursive = true
-remove-all-unused-imports = true
-exclude = '\.git,\.?venv,\.mypy_cache,br-.*,branch-.*,libs,stubs,tests/files,typings'
-
-[tool.black]
-line-length = 120
-target-version = ['py33']
-preview = true
-# regex
-exclude = '''
-/(
-  \.git
-  | \.?venv
-  | \.mypy_cache
-  | br-*
-  | branch-*
-  | libs
-  | stubs
-  | tests/files
-  | typings
-)/
-'''
+[tool.basedpyright]
+pythonVersion = '3.8'
 
 [tool.pyright]
-include = ['./']
-exclude = [
-  '**/__pycache__/',
-  '**/node_modules/',
-  # git-related
-  '**/.git/',
-  '**/br-*/',
-  '**/branch-*/',
-]
-ignore = [
-  '**/.venv',
-  '**/libs',
-]
-stubPath = 'typings'
-pythonVersion = '3.11'
+pythonVersion = '3.8'
 
 [tool.ruff]
-select = ["E", "F", "W"]
+preview = true
 line-length = 120
 target-version = 'py38'
+exclude = [
+  "*/libs/*",
+  ".git",
+  ".mypy_cache",
+  ".venv",
+  ".venv-*",
+  "branch-*",
+  "scripts/module_scraper",
+  "stubs",
+  "tests/files",
+  "typings",
+  "vendor",
+  "venv",
+  "venv-*",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP"]
+ignore = ["E203"]
+
+[tool.ruff.lint.per-file-ignores]
+"boot.py" = ["E402"]

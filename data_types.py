@@ -1,6 +1,8 @@
-from LSP.plugin import Notification
-from LSP.plugin.core.typing import List
+from __future__ import annotations
 
+from typing import List
+
+from LSP.plugin import Notification
 
 FilePath = str
 
