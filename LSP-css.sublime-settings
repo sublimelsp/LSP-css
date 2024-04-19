@@ -299,37 +299,5 @@
 		// Enables or disables all validations.
 		"scss.validate": true,
 	},
-	// ST4
 	"selector": "source.css | source.scss | source.less",
-	// ST3
-	"languages": [
-		{
-			"languageId": "css",
-			"scopes": [
-				"source.css",
-			],
-			"syntaxes": [
-				"Packages/CSS/CSS.sublime-syntax",
-				"Packages/CSS3/CSS3.sublime-syntax",
-			],
-		},
-		{
-			"languageId": "scss",
-			"scopes": [
-				"source.scss",
-			],
-			"syntaxes": [
-				"Packages/Sass/Syntaxes/SCSS.sublime-syntax",
-			],
-		},
-		{
-			"languageId": "less",
-			"scopes": [
-				"source.less",
-			],
-			"syntaxes": [
-				"Packages/LESS/Syntaxes/LESS.sublime-syntax",
-			],
-		},
-	],
 }
