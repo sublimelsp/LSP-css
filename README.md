@@ -28,13 +28,3 @@ There are some ways to configure the package and the language server.
    - add `"disable_default_completions": true` in the view on the right
 
   Repeat for other syntaxes that provide built-in completions. Same applies to third-party SASS package that provides SASS and SCSS support.
-
-- The server exited with status code 1.
-
-  It's probably that the `node` executable on your system is outdated.
-  This plugin requires v14 as of version [1.0.9](https://github.com/sublimelsp/LSP-css/releases/tag/1.0.9).
-  If your OS is incapable of using Node v14 like Windows 7, you can
-
-  - either download and use [1.0.8](https://github.com/sublimelsp/LSP-css/releases/tag/1.0.8) manually.
-  - or if you want to try the hard way, you can use Node v14 on Windows 7 on your own risk.
-    See https://github.com/nodejs/node/issues/33000#issuecomment-644530517.
