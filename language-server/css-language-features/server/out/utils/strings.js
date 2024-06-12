@@ -4,7 +4,8 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.endsWith = exports.startsWith = void 0;
+exports.startsWith = startsWith;
+exports.endsWith = endsWith;
 function startsWith(haystack, needle) {
     if (haystack.length < needle.length) {
         return false;
@@ -16,7 +17,6 @@ function startsWith(haystack, needle) {
     }
     return true;
 }
-exports.startsWith = startsWith;
 /**
  * Determines if haystack ends with needle.
  */
@@ -32,4 +32,3 @@ function endsWith(haystack, needle) {
         return false;
     }
 }
-exports.endsWith = endsWith;

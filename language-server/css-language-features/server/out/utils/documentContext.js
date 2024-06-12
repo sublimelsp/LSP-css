@@ -4,7 +4,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getDocumentContext = void 0;
+exports.getDocumentContext = getDocumentContext;
 const strings_1 = require("../utils/strings");
 const vscode_uri_1 = require("vscode-uri");
 function getDocumentContext(documentUri, workspaceFolders) {
@@ -34,4 +34,3 @@ function getDocumentContext(documentUri, workspaceFolders) {
         },
     };
 }
-exports.getDocumentContext = getDocumentContext;

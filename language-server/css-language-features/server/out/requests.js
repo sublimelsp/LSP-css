@@ -4,7 +4,8 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getRequestService = exports.FileType = exports.FsReadDirRequest = exports.FsStatRequest = exports.FsContentRequest = void 0;
+exports.FileType = exports.FsReadDirRequest = exports.FsStatRequest = exports.FsContentRequest = void 0;
+exports.getRequestService = getRequestService;
 const vscode_languageserver_1 = require("vscode-languageserver");
 var FsContentRequest;
 (function (FsContentRequest) {
@@ -72,7 +73,6 @@ function getRequestService(handledSchemas, connection, runtime) {
         }
     };
 }
-exports.getRequestService = getRequestService;
 function getScheme(uri) {
     return uri.substr(0, uri.indexOf(':'));
 }

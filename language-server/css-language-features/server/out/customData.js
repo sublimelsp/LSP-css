@@ -4,7 +4,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.fetchDataProviders = void 0;
+exports.fetchDataProviders = fetchDataProviders;
 const vscode_css_languageservice_1 = require("vscode-css-languageservice");
 function fetchDataProviders(dataPaths, requestService) {
     const providers = dataPaths.map(async (p) => {
@@ -18,7 +18,6 @@ function fetchDataProviders(dataPaths, requestService) {
     });
     return Promise.all(providers);
 }
-exports.fetchDataProviders = fetchDataProviders;
 function parseCSSData(source) {
     let rawData;
     try {
