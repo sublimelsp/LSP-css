@@ -3,7 +3,7 @@ from __future__ import annotations
 import os
 
 import sublime
-from LSP.plugin import Session, filename_to_uri
+from LSP.plugin import Session
 from lsp_utils import ApiWrapperInterface, NpmClientHandler
 
 from .data_types import CustomDataChangedNotification
@@ -54,7 +54,5 @@ class LspCssPlugin(NpmClientHandler):
         resolved_custom_data_paths: list[str] = []
         for folder in session.get_workspace_folders():
             # Converting to URI as server can't handle reading the content if it's a file path.
-            resolved_custom_data_paths.extend(
-                filename_to_uri(os.path.abspath(os.path.join(folder.path, p))) for p in custom_data_paths
-            )
+            resolved_custom_data_paths.extend(os.path.abspath(os.path.join(folder.path, p)) for p in custom_data_paths)
         session.send_notification(CustomDataChangedNotification.create(resolved_custom_data_paths))
