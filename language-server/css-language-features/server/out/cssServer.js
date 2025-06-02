@@ -88,7 +88,9 @@ function startServer(connection, runtime) {
             documentLinkProvider: {
                 resolveProvider: false
             },
-            codeActionProvider: true,
+            codeActionProvider: {
+                codeActionKinds: [vscode_css_languageservice_1.CodeActionKind.QuickFix]
+            },
             renameProvider: true,
             colorProvider: {},
             foldingRangeProvider: true,
@@ -238,7 +240,7 @@ function startServer(connection, runtime) {
             if (document) {
                 await dataProvidersReady;
                 const stylesheet = stylesheets.get(document);
-                return getLanguageService(document).doCodeActions(document, codeActionParams.range, codeActionParams.context, stylesheet);
+                return getLanguageService(document).doCodeActions2(document, codeActionParams.range, codeActionParams.context, stylesheet);
             }
             return [];
         }, [], `Error while computing code actions for ${codeActionParams.textDocument.uri}`, token);
