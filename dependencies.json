@@ -2,7 +2,8 @@
     "*": {
         "*": [
             "lsp_utils",
-            "sublime_lib"
+            "sublime_lib",
+            "typing_extensions"
         ]
     }
 }
