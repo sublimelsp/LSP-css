@@ -1,3 +1,40 @@
+[project]
+name = "LSP-html"
+version = "0.0.0"
+description = "HTML support for Sublime's LSP plugin"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+  "typing-extensions>=4.11",
+]
+
+[dependency-groups]
+dev = [
+  "mypy>=1.14",
+  "ruff>=0.13",
+  "types-jmespath",
+]
+
+[tool.uv]
+default-groups = ["dev"]
+
+[tool.mypy]
+# ignore_missing_imports = False
+check_untyped_defs = true
+strict_optional = true
+mypy_path = 'typings:stubs'
+python_version = '3.8'
+
+[[tool.mypy.overrides]]
+module = [
+    "LSP.*",
+    "lsp_utils.*",
+    "sublime_lib.*",
+    "typings.*",
+]
+ignore_errors = true
+ignore_missing_imports = true
+
 [tool.basedpyright]
 pythonVersion = '3.8'
 
