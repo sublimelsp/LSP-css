@@ -6,9 +6,8 @@ import sublime
 from LSP.plugin import Session
 from lsp_utils import ApiWrapperInterface, NpmClientHandler
 
+from .constants import PACKAGE_NAME
 from .data_types import CustomDataChangedNotification
-
-assert __package__
 
 
 def plugin_loaded() -> None:
@@ -20,7 +19,7 @@ def plugin_unloaded() -> None:
 
 
 class LspCssPlugin(NpmClientHandler):
-    package_name = __package__
+    package_name = PACKAGE_NAME
     server_directory = "language-server"
     server_binary_path = os.path.join(
         server_directory,
