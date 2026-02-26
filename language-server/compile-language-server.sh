@@ -74,6 +74,9 @@ cat << EOF > tsconfig.mod.json
 {
     "extends": "./tsconfig.json",
     "compilerOptions": {
+        "typeRoots": [
+            "./node_modules/@types"
+        ],
         "outDir": "./out"
     },
     "include": [
