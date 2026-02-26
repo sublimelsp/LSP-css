@@ -1,10 +1,12 @@
 from __future__ import annotations
 
 import os
+from typing import final
 
 import sublime
-from LSP.plugin import Session
+from LSP.plugin import ClientConfig, Session
 from lsp_utils import ApiWrapperInterface, NpmClientHandler
+from typing_extensions import override
 
 from .constants import PACKAGE_NAME
 from .data_types import CustomDataChangedNotification
@@ -18,6 +20,7 @@ def plugin_unloaded() -> None:
     LspCssPlugin.cleanup()
 
 
+@final
 class LspCssPlugin(NpmClientHandler):
     package_name = PACKAGE_NAME
     server_directory = "language-server"
@@ -30,19 +33,21 @@ class LspCssPlugin(NpmClientHandler):
         "cssServerNodeMain.js",
     )
 
+    @override
     @classmethod
     def required_node_version(cls) -> str:
         return ">=14"
 
+    @override
     @classmethod
-    def should_ignore(cls, view: sublime.View) -> bool:
+    def is_applicable(cls, view: sublime.View, config: ClientConfig) -> bool:
         return bool(
-            # SublimeREPL views
-            view.settings().get("repl")
-            # syntax test files
-            or os.path.basename(view.file_name() or "").startswith("syntax_test")
+            super().is_applicable(view, config)
+            # REPL views (https://github.com/sublimelsp/LSP-pyright/issues/343)
+            and not view.settings().get("repl")
         )
 
+    @override
     def on_ready(self, api: ApiWrapperInterface) -> None:
         if not (session := self.weaksession()):
             return
