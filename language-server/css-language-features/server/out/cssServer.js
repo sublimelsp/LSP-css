@@ -44,12 +44,14 @@ function startServer(connection, runtime) {
     // in the passed params the rootPath of the workspace plus the client capabilities.
     connection.onInitialize((params) => {
         const initializationOptions = params.initializationOptions || {};
-        workspaceFolders = params.workspaceFolders;
-        if (!Array.isArray(workspaceFolders)) {
+        if (!Array.isArray(params.workspaceFolders)) {
             workspaceFolders = [];
             if (params.rootPath) {
                 workspaceFolders.push({ name: '', uri: vscode_uri_1.URI.file(params.rootPath).toString(true) });
             }
+        }
+        else {
+            workspaceFolders = params.workspaceFolders;
         }
         requestService = (0, requests_1.getRequestService)(initializationOptions?.handledSchemas || ['file'], connection, runtime);
         function getClientCapability(name, def) {
