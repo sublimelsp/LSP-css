@@ -8,7 +8,7 @@
 		// such as "ColorHelper" or "Color Highlighter"
 		// "colorProvider": true,
 	},
-	"initializationOptions": {
+	"initialization_options": {
 		"handledSchemas": ["file"],
 		"provideFormatter": true,
 	},
