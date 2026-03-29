@@ -43,7 +43,7 @@ function startServer(connection, runtime) {
     // After the server has started the client sends an initialize request. The server receives
     // in the passed params the rootPath of the workspace plus the client capabilities.
     connection.onInitialize((params) => {
-        const initialization_options = params.initialization_options || {};
+        const initializationOptions = params.initializationOptions || {};
         if (!Array.isArray(params.workspaceFolders)) {
             workspaceFolders = [];
             if (params.rootPath) {
@@ -53,7 +53,7 @@ function startServer(connection, runtime) {
         else {
             workspaceFolders = params.workspaceFolders;
         }
-        requestService = (0, requests_1.getRequestService)(initialization_options?.handledSchemas || ['file'], connection, runtime);
+        requestService = (0, requests_1.getRequestService)(initializationOptions?.handledSchemas || ['file'], connection, runtime);
         function getClientCapability(name, def) {
             const keys = name.split('.');
             let c = params.capabilities;
@@ -68,7 +68,7 @@ function startServer(connection, runtime) {
         const snippetSupport = !!getClientCapability('textDocument.completion.completionItem.snippetSupport', false);
         scopedSettingsSupport = !!getClientCapability('workspace.configuration', false);
         foldingRangeLimit = getClientCapability('textDocument.foldingRange.rangeLimit', Number.MAX_VALUE);
-        formatterMaxNumberOfEdits = initialization_options?.customCapabilities?.rangeFormatting?.editLimit || Number.MAX_VALUE;
+        formatterMaxNumberOfEdits = initializationOptions?.customCapabilities?.rangeFormatting?.editLimit || Number.MAX_VALUE;
         languageServices.css = (0, vscode_css_languageservice_1.getCSSLanguageService)({ fileSystemProvider: requestService, clientCapabilities: params.capabilities });
         languageServices.scss = (0, vscode_css_languageservice_1.getSCSSLanguageService)({ fileSystemProvider: requestService, clientCapabilities: params.capabilities });
         languageServices.less = (0, vscode_css_languageservice_1.getLESSLanguageService)({ fileSystemProvider: requestService, clientCapabilities: params.capabilities });
@@ -102,8 +102,8 @@ function startServer(connection, runtime) {
                 interFileDependencies: false,
                 workspaceDiagnostics: false
             },
-            documentRangeFormattingProvider: initialization_options?.provideFormatter === true,
-            documentFormattingProvider: initialization_options?.provideFormatter === true,
+            documentRangeFormattingProvider: initializationOptions?.provideFormatter === true,
+            documentFormattingProvider: initializationOptions?.provideFormatter === true,
         };
         return { capabilities };
     });
