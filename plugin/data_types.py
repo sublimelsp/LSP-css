@@ -1,8 +1,7 @@
 from __future__ import annotations
 
-from typing import List
-
 from LSP.plugin import Notification
+from typing import List
 from typing_extensions import TypeAlias
 
 FilePath: TypeAlias = str

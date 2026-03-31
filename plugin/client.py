@@ -1,15 +1,15 @@
 from __future__ import annotations
 
-import os
-from typing import final
-
-import sublime
-from LSP.plugin import ClientConfig, Session
-from lsp_utils import ApiWrapperInterface, NpmClientHandler
-from typing_extensions import override
-
 from .constants import PACKAGE_NAME
 from .data_types import CustomDataChangedNotification
+from LSP.plugin import ClientConfig
+from LSP.plugin import Session
+from lsp_utils import ApiWrapperInterface
+from lsp_utils import NpmClientHandler
+from typing import final
+from typing_extensions import override
+import os
+import sublime
 
 
 def plugin_loaded() -> None:
