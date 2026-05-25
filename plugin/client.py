@@ -13,7 +13,6 @@ from .data_types import CustomDataChangedNotification
 
 @final
 class LspCssPlugin(LspPlugin):
-
     @classmethod
     @override
     def on_pre_start_async(cls, context: OnPreStartContext) -> None:
@@ -21,9 +20,9 @@ class LspCssPlugin(LspPlugin):
         NodeManager.on_pre_start_async(
             context,
             cls.plugin_storage_path,
-            ResourcePath('Packages', package_name, 'language-server'),
+            ResourcePath("Packages", package_name, "language-server"),
             Path("css-language-features", "server", "out", "node", "cssServerNodeMain.js"),
-            node_version_requirement='>=14',
+            node_version_requirement=">=14",
         )
 
     @override
