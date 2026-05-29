@@ -1,8 +1,4 @@
 {
-	"command": ["${node_bin}", "${server_path}", "--stdio"],
-	"schemes": ["file", "buffer", "res"],
-	// "disabled_capabilities" is ST4-only.
-	// If you are on ST3, it's in LSP's configuration and can't be set client-wise.
 	"disabled_capabilities": {
 		// remove the comment for "colorProvider" if you prefer other color plugins
 		// such as "ColorHelper" or "Color Highlighter"
@@ -299,5 +295,12 @@
 		// Enables or disables all validations.
 		"scss.validate": true,
 	},
+	// The path to the server binary used to start the language server.
+	// Use `auto` for the package to manage (install/update) the server automatically.
+	// NOTE: Change this instead of directly updating `command` - the `${server_path}` variable is dynamically resolved based on this setting.
+	// WARNING: Override at your own risk - using a custom binary can cause compatibility issues with server settings.
+	"server_path": "auto",
+	"command": ["${node_bin}", "${server_path}", "--stdio"],
+	"schemes": ["file", "buffer", "res"],
 	"selector": "source.css | source.scss | source.less",
 }

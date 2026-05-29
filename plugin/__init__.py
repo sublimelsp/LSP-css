@@ -15,9 +15,9 @@ __all__ = (
 
 def plugin_loaded() -> None:
     """Executed when this plugin is loaded."""
-    LspCssPlugin.setup()
+    LspCssPlugin.register()
 
 
 def plugin_unloaded() -> None:
     """Executed when this plugin is unloaded."""
-    LspCssPlugin.cleanup()
+    LspCssPlugin.unregister()
